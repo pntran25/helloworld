@@ -103,7 +103,7 @@ function getRandomMessage() {
         "Welcome to Phi's portfolio!",
         "Check out my projects!",
         "Feel free to contact me!",
-        "Hope you having a great time!",
+        "Hope you're having a great time!",
         "At the bottom right of the windows, you can resize them!",
         "I looove basketball!",
         "I'm a big fan of R&B, Indie, and Rap music!",
