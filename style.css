@@ -12,8 +12,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: scale(1); /* Ensure scaling remains the same */
-    transform-origin: top left; /* Scale from the top left corner */
+    transform: scale(1); 
+    transform-origin: top left; 
 }
 
 main {
@@ -37,7 +37,7 @@ main {
     font-family: "WINDOWS";
     margin-top: 10px;
     position: absolute;
-    bottom: -30px; /* Adjust the position of the text */
+    bottom: -30px; 
     left: 50%;
     transform: translateX(-50%);
 }
