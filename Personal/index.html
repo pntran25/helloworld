@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <button class="image-button" onclick="afterbutton()"></button>
+    <main>
+        <div class="portfolio-content" style="display: none;">
+            <footer class="footer">
+                <img class="image-phi" src="images/me.jpg" alt="phi">
+                <p style="font-family: WINDOWS;">PHI TRAN</p>
+                <div class="image-links" style="margin-right: auto; margin-left: 90px;">
+                    <a href="https://www.linkedin.com/in/pntran25/" target="_blank">
+                        <img class="image-links" src="images/linkedin.png" alt="LinkedIn">
+                    </a> 
+                    <a href="https://github.com/pntran25" target="_blank">
+                        <img class="image-links" src="images/github.png" alt="GitHub">
+                    </a>     
+                </div>
+            </footer>
+            
+            <div>
+                <div class="about">
+                    <button onclick="showPopup('aboutPopup')">
+                        <div class="text-under-icon">
+                            <img class="image-icons" src="images/aboutme.png" alt="About">     
+                            <p style="font-family: WINDOWS;">ABOUT</p>
+                        </div>
+                    </button>
+                </div>        
+                <div class="competencies">
+                    <button onclick="showPopup('competenciesPopup')">
+                        <div class="text-under-icon">
+                            <img class="image-icons" src="images/competencies.png" alt="Competencies">             
+                            <p style="font-family: WINDOWS;">SKILLS</p>          
+                        </div>
+                        
+                    </button>
+                </div>
+                <div class="projects">
+                    <button onclick="showPopup('projectsPopup')">
+                        <div class="text-under-icon">
+                            <img class="image-icons" src="images/projects.png" alt="Projects">
+                            <p style="font-family: WINDOWS;">PROJECTS</p>
+                        </div>
+                    </button>
+                </div>
+                <div class="highlights">
+                    <button onclick="showPopup('highlightsPopup')">
+                        <div class="text-under-icon">
+                            <img class="image-icons" src="images/highlights.png" alt="Highlights">                     
+                            <p style="font-family: WINDOWS;">SUCCESS</p>
+                        </div>
+
+                    </button>
+                </div>
+                <div class="documents">
+                    <button onclick="showPopup('documentsPopup')">
+                        <div class="text-under-icon">
+                            <img class="image-icons" src="images/documents.png" alt="Documents"> 
+                            <p style="font-family: WINDOWS;">PAPERS</p>
+                        </div>       
+                    </button>
+                </div>      
+                <div class="contact">
+                    <button onclick="showPopup('contactPopup')">
+                        <div class="text-under-icon">
+                            <img class="image-icons" src="images/contactme.png" alt="Documents"> 
+                            <p style="font-family: WINDOWS;">CONTACT</p>
+                        </div>                                       
+                     </button>
+                </div>
+                <div class="eyes-deco" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <img src="images/faceclosed.png" alt="face" style="opacity: 0.25; display: block; width: 25vw; height: auto;">
+                </div>
+            </div>
+        </div>
+    </main> 
+    <p class="loading-text glitch" style="display: none; transform: translate(0, 300px);">
+        <span aria-hidden="true">Portfolio Loading...</span>
+        Portfolio Loading...
+        <span aria-hidden="true">Portfolio Loading...</span>
+    </p>
+    <p class="welcome-text glitch" style="display: none; transform: translate(0, 300px);">
+        <span aria-hidden="true">Welcome!</span>
+        Welcome!
+        <span aria-hidden="true">Welcome!</span>
+    </p>
+
+    <!-- About Popup -->
+    <div id="aboutPopup" class="popup">
+        <div class="popup-header">
+            <h2>About Me</h2>
+            <button class="popup-close" onclick="closePopup('aboutPopup')">×</button>
+        </div>
+        <img src="images/me.jpg" alt="Phi Tran" style="width: 35%; display: block; margin: 0 auto; border: 5px solid black; border-radius: 10px;">
+        <h1 style="text-align: center;">Phi Tran</h1>
+        <h3 style="text-align: center;">Aspiring Software Engineer and Developer</h3>
+        <div style="text-align: center; margin-left: 50px; margin-right: 50px;">
+            <hr style="border: 1px solid black; margin-top: 15px; margin-left: 25px; margin-right: 25px;">
+            <p style="font-size: 1m;">Hi! I'm Phi Tran, a freshman Computer Science student at the University of Houston. I'm passionate about software development and programming, with a current love on game development. I'm always eager to learn new technologies including machine learning AI, cybersecurity, database administration, and more! I'm currently seeking internship opportunities to gain more experience and contribute to a team. Feel free to contact me!</p>
+        </div><br>
+        <div style="display: flex; align-items: center; justify-content: center; margin-left: 50px; margin-right: 50px; background-color: rgb(251, 250, 242); border-radius: 15px; padding: 25px; border: 3px solid black;">
+            <img src="images/uh.png" alt="UH" style="width: 25%; border-radius: 10px; margin-right: 20px;">
+            <div style="margin-top: 5px; margin-bottom: 5px;">
+                <h4 style="margin-top: 5px; margin-bottom: 5px;">University of Houston</h4>
+                <h5 style="margin-top: 5px; margin-bottom: 5px;">Bachelor of Computer Science</h5>
+                <p style="margin-top: 5px; margin-bottom: 5px;">Graduating in 2028</p>
+                <ul style="margin-top: 5px; margin-bottom: 5px;">
+                    <li style="margin-top: 5px; margin-bottom: 5px;">Major in Computer Science</li>
+                    <li style="margin-top: 5px; margin-bottom: 5px;">GPA 4.0/4.0</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Competencies Popup -->
+    <div id="competenciesPopup" class="popup">
+        <div class="popup-header">
+            <h2>Skills</h2>
+            <button class="popup-close" onclick="closePopup('competenciesPopup')">×</button>
+        </div>
+        <div style="text-align: center; margin-left: 50px; margin-right: 50px;">
+            <h4 style="display: inline-block; padding: 15px; background-color: white; border-radius: 10px; border: solid 3px black;">Programming Languages</h4>
+            <ul class="skills-list">
+                <li>
+                    <p>C++<p>
+                    <img src="images/C++.png" alt="C++" class="skills-icon">
+                </li>
+                <li>
+                    <p>Python</p>
+                    <img src="images/Python.png" alt="Python" class="skills-icon">
+                </li>
+                <li>
+                    <p>C#</p>
+                    <img src="images/csharp.png" alt="C#" class="skills-icon">
+                </li>
+                <li>
+                    <p>HTML</p>
+                    <img src="images/HTML.png" alt="html" class="skills-icon">
+                </li>
+                <li>
+                    <p>CSS</p>
+                    <img src="images/CSS.png" alt="CSS" class="skills-icon">
+                </li>
+                <li>
+                    <p>JavaScript</p>
+                    <img src="images/js.png" alt="JavaScript" class="skills-icon">
+                </li>                
+                <li>
+                    <p>Java</p>
+                    <img src="images/java.png" alt="JavaScript" class="skills-icon">
+                </li>                
+            </ul>
+            <h4 style="display: inline-block; text-align: center; margin: 10px;padding: 15px; background-color: white; border-radius: 10px; border: solid 3px black;">Tools and Technologies</h4>
+            <ul class="skills-list">
+                <li>
+                    <p>Unity</p>
+                    <img src="images/unity.png" alt="Unity" class="skills-icon">
+                </li>
+                <li>
+                    <p>SQL</p>
+                    <img src="images/SQL.png" alt="sql" class="skills-icon">
+                </li>
+                <li>
+                    <p>MySQL</p>
+                    <img src="images/mysql.png" alt="mysql" class="skills-icon">
+                </li>
+                <li>
+                    <p>VS Code</p>
+                    <img src="images/vscode.png" alt="Visual Studio" class="skills-icon">
+                </li>
+                <li>
+                    <p>Git</p>
+                    <img src="images/git.png" alt="Git" class="skills-icon">
+                </li>
+                <li>
+                    <p>Node</p>
+                    <img src="images/nodejs.png" alt="node" class="skills-icon">
+                </li>
+                <li>
+                    <p>React</p>
+                    <img src="images/react.png" alt="React" class="skills-icon">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Projects Popup -->
+    <div id="projectsPopup" class="popup">
+        <div class="popup-header">
+            <h2>Projects</h2>
+            <button class="popup-close" onclick="closePopup('projectsPopup')">×</button>
+        </div>
+        <div style="text-align: center; margin-left: 50px; margin-right: 50px; background-color: rgb(251, 250, 242); border-radius: 15px; padding: 25px; border: 3px solid black;">
+            <h3>Apian Wish</h3><hr style="border: 1px solid black; margin-top: 15px;">
+            <p>A video game team project created for competition in the Technological Student Association from September 2023 to April 2024. I was the team lead, developing game mechanics using C# scripts in Unity Engine.</p>
+            <a href="https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024" target="_blank">
+                <img src="images/apian wish.png" alt="TSA" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+            </a>
+            <button onclick="window.open('https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">Live</button>
+        </div>
+        <br>
+        <div style="text-align: center; margin-left: 50px; margin-right: 50px; background-color: rgb(251, 250, 242); border-radius: 15px; padding: 25px; border: 3px solid black;">
+            <h3>Treasure X Truth</h3><hr style="border: 1px solid black; margin-top: 15px;">
+            <p>My first video game design when I first joined TSA (Technological Student Association) beginning in September 2022 to April 2023. I volunteered to be the team lead of 5 members, rapidly learning how to develop and code core game mechanics using C# scripts in Unity Engine.</p>
+            <a href="https://play.unity.com/en/games/a3030501-fd63-459c-b98b-b0a985211b4d/treasure-x-truth" target="_blank">
+                <img src="images/treasure.png" alt="TSA" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+            </a>
+            <button onclick="window.open('https://play.unity.com/en/games/a3030501-fd63-459c-b98b-b0a985211b4d/treasure-x-truth', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">Live</button>
+        </div>
+    </div>
+    <div id="highlightsPopup" class="popup">
+        <div class="popup-header">
+            <h2>Success</h2>
+            <button class="popup-close" onclick="closePopup('highlightsPopup')">×</button>
+        </div>
+        
+        <ul style="list-style-type: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: space-around; border: none;">
+            <li style="text-align: center; margin: 10px; border: 3px solid #000000 ; padding: 15px; border-radius: 10px; background-color: white;">
+                <h3>Technology Student Association 1st Place Winner, 2024</h3>
+                <h3>Video Game Design</h3>
+                
+                <hr style="border: 1px solid black; margin-top: 15px; margin-right: 20px; margin-left: 20px;">
+                <p style="margin-left: 25px; margin-right: 25px;">From September 2023 to April 2024, as a competitor for TSA (Tecnological Student Association), I led a team of 5 members as a lead developer and team lead using Unity Engine with C# scripts, naming our project "Apian Wish". We placed 1st, competing aganist 10+ different schools in Video Game Design. This project was a learning curve with trivial debugging and coding 50+ scripts, inspired to improve from my previous video game project, "Treasure X Truth" that placed 2nd in 2023.</p>
+                <a href="https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024" target="_blank">
+                    <img src="images/tsa.jpg" alt="TSA" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+                </a>   
+            </li>
+        </ul>
+        <div style="text-align: center; margin: 10px; border: 3px solid #000000 ; padding: 15px; border-radius: 10px; background-color: white;">
+            <h3>Academic Excellence Scholarship</h3>
+            
+            <a href="documents/academic.pdf" target="_blank">
+                <img src="images/scholarship.png" alt="Scholarship" style="width: 50%; margin: 15px auto; border: 3px solid black; border-radius: 10px;">
+            </a>
+            <h3>University of Houston Dean's List</h3>
+            <a href="documents/deanslist.pdf" target="_blank">
+                <img src="images/deanslist.png" alt="Dean's List" style="width: 50%; margin: 15px auto; border: 3px solid black; border-radius: 10px;">
+            </a>
+        </div>
+    </div>
+    <!-- Documents Popup -->
+    <div id="documentsPopup" class="popup">
+        <div class="popup-header">
+            <h2>Papers</h2>
+            <button class="popup-close" onclick="closePopup('documentsPopup')">×</button>
+        </div>
+        <h3 style="text-align: center;">My Resume:</h3>
+        <div style="text-align: center;">
+            <a href="documents/CS Resume (15).pdf" target="_blank">
+            <img src="images/resumethumbnail.png" alt="Resume" style="width: 70%; display: block; margin: 0 auto; border: 3px solid black; border-radius: 10px;">
+            </a>
+        </div>
+        <h3 style="text-align: center;">My References:</h3>
+        <div style="text-align: center;">
+            <h3><u>Dr. Chang Yun</u></h3>
+            <p>Instructional Associate Professor
+            Ph.D., University of Houston</p>
+            <a href="documents/changreference.pdf" target="_blank">
+            <img src="images/changreference.png" alt="Chang" style="width: 45%; display: block; margin: 0 auto; border: 3px solid black; border-radius: 8px;">
+            </a>
+        </div>
+    </div>
+
+    <!-- Contact Popup -->
+    <div id="contactPopup" class="popup">
+        <div class="popup-header">
+            <h2>Contact</h2>
+            <button class="popup-close" onclick="closePopup('contactPopup')">×</button>
+        </div>
+        <p>Email: phitrann0810@gmail.com</p>
+        <p>Outlook: pntran25@cougarnet.uh.edu</p>
+        <p>Phone: (713) 452-9278</p>
+        <h3 style="text-align: center;"> Send A Message!</h3>
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            <input type="hidden" name="access_key" value="65771c5d-fded-4421-bfbe-cfebb5dceaad">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="contact-inputs" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="contact-inputs" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="10" class="contact-inputs" required></textarea>
+            <br>
+            <input type="submit" value="Send">
+        </form>
+    </div>
+</body>
+</html>
