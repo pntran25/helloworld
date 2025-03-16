@@ -28,8 +28,19 @@ main {
     font-family: 'WINDOWS'; 
     src: url('fonts/w95fa[1].ttf');
 }      
-
-/*         INTRODUCTION         */
+.image-button::after {
+    content: "Open the Computer!";
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.452);
+    font-family: "WINDOWS";
+    margin-top: 10px;
+    position: absolute;
+    bottom: -30px; /* Adjust the position of the text */
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 .image-button {
     background: url("images/computer.png") no-repeat center center; /* set the image as the background */
