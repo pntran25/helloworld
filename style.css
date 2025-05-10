@@ -290,6 +290,7 @@ main {
     border-radius: 10px;
     resize: both; /* allow resizing both horizontally and vertically */
     overflow: auto; /*  content isgona be scrollable when resized */
+    padding-top: 0px; /* Add padding-top to ensure content doesn't go under the sticky header */
 }
 
 .popup-resize-handle {
@@ -306,10 +307,16 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #f5efdd;
     border-bottom: 3px solid #2e2e2e;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Remove margin to prevent content peeking through */
+    height: 50px;
     cursor: move; 
+    background-clip: padding-box;
+    margin-top: 10px;
 }
 
 .popup-header h2 {
@@ -392,4 +399,19 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+}
+
+.projects-list{
+    text-align: center; 
+    margin-left: 50px; 
+    margin-right: 50px; 
+    background-color: rgb(251, 250, 242); 
+    border-radius: 15px; 
+    padding: 25px; 
+    border: 3px solid black;
+}
+
+/* Remove top margin from first child after .popup-header to prevent gap */
+.popup > .popup-header + * {
+    margin-top: 0 !important;
 }

@@ -33,12 +33,24 @@ function afterbutton() {
     }, 5000);
 }
 
+function bringPopupToFront(popup) {
+    const popups = document.querySelectorAll('.popup');
+    popups.forEach(p => {
+        p.style.zIndex = 10;
+    });
+    popup.style.zIndex = 1001;
+}
+
 function showPopup(popupId) {
-    document.getElementById(popupId).style.display = 'block';
+    const popup = document.getElementById(popupId);
+    bringPopupToFront(popup);
+    popup.style.display = 'block';
 }
 
 function closePopup(popupId) {
-    document.getElementById(popupId).style.display = 'none';
+    const popup = document.getElementById(popupId);
+    popup.style.display = 'none';
+    popup.style.zIndex = 10; // reset z-index when closed
 }
 
 function makeDraggable(popupId) {
@@ -147,5 +159,13 @@ document.addEventListener('DOMContentLoaded', function() {
         chatBubble.textContent = getRandomMessage();
         const position = getRandomPosition();
         chatBubble.style.transform = `translate(${position.x}px, ${position.y}px)`;
+    });
+
+    // Add click event to bring popup to front when clicked
+    const popups = document.querySelectorAll('.popup');
+    popups.forEach(popup => {
+        popup.addEventListener('mousedown', function() {
+            bringPopupToFront(popup);
+        });
     });
 });

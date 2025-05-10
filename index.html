@@ -97,7 +97,7 @@
         <div class="popup-header">
             <h2>About Me</h2>
             <button class="popup-close" onclick="closePopup('aboutPopup')">×</button>
-        </div>
+        </div><br>
         <img src="images/me.jpg" alt="Phi Tran" style="width: 35%; display: block; margin: 0 auto; border: 5px solid black; border-radius: 10px;">
         <h1 style="text-align: center;">Phi Tran</h1>
         <h3 style="text-align: center;">Aspiring Software Engineer and Developer</h3>
@@ -127,7 +127,7 @@
         </div>
         <div style="text-align: center; margin-left: 50px; margin-right: 50px;">
             <h4 style="display: inline-block; padding: 15px; background-color: white; border-radius: 10px; border: solid 3px black;">Programming Languages</h4>
-            <ul class="skills-list">
+            <ul class="skills-list"><br>
                 <li>
                     <p>C++<p>
                     <img src="images/C++.png" alt="C++" class="skills-icon">
@@ -197,7 +197,26 @@
             <h2>Projects</h2>
             <button class="popup-close" onclick="closePopup('projectsPopup')">×</button>
         </div>
-        <div style="text-align: center; margin-left: 50px; margin-right: 50px; background-color: rgb(251, 250, 242); border-radius: 15px; padding: 25px; border: 3px solid black;">
+        <br>
+        <div class="projects-list">
+            <h3>Sonny</h3><hr style="border: 1px solid black; margin-top: 15px;">
+            <p>Co-led a cross-functional team project with 14 team members from December 2024 to present, engineering an indie-thriller video game. Integrated AI mechanics (NavMesh), collaborated using version control in GitHub Desktop, and developed multiple objected-orientated C# scripts to fully enhance different game mechanics. </p>
+            <a href="https://github.com/odstpilot/ProjectSonny" target="_blank">
+                <img src="images/sonny.png" alt="what" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+            </a>
+            <button onclick="window.open('https://github.com/odstpilot/ProjectSonny', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">GitHub</button>
+        </div>
+        <br>
+         <div class="projects-list">
+            <h3>AI (KNN) Color Detector</h3><hr style="border: 1px solid black; margin-top: 15px;">
+            <p>Implemented KNN to find the color of a pixel from an image. Developed using Python, OpenCV, Pandas, and KNN to fully make the learn and recieve colors from the dataset and finding the accurate color of the pixel</p>
+            <a href="https://github.com/pntran25/color-detection" target="_blank">
+                <img src="images/color-me.png" alt="what" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+            </a>
+            <button onclick="window.open('https://github.com/pntran25/color-detection', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">GitHub</button>
+        </div>
+        <br>
+        <div class="projects-list">
             <h3>Apian Wish</h3><hr style="border: 1px solid black; margin-top: 15px;">
             <p>A video game team project created for competition in the Technological Student Association from September 2023 to April 2024. I was the team lead, developing game mechanics using C# scripts in Unity Engine.</p>
             <a href="https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024" target="_blank">
@@ -206,7 +225,7 @@
             <button onclick="window.open('https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">Live</button>
         </div>
         <br>
-        <div style="text-align: center; margin-left: 50px; margin-right: 50px; background-color: rgb(251, 250, 242); border-radius: 15px; padding: 25px; border: 3px solid black;">
+        <div class="projects-list">
             <h3>Treasure X Truth</h3><hr style="border: 1px solid black; margin-top: 15px;">
             <p>My first video game design when I first joined TSA (Technological Student Association) beginning in September 2022 to April 2023. I volunteered to be the team lead of 5 members, rapidly learning how to develop and code core game mechanics using C# scripts in Unity Engine.</p>
             <a href="https://play.unity.com/en/games/a3030501-fd63-459c-b98b-b0a985211b4d/treasure-x-truth" target="_blank">
@@ -214,12 +233,25 @@
             </a>
             <button onclick="window.open('https://play.unity.com/en/games/a3030501-fd63-459c-b98b-b0a985211b4d/treasure-x-truth', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">Live</button>
         </div>
+        <br>
+       
+        <div class="projects-list">
+            <h3>Portfolio Website</h3><hr style="border: 1px solid black; margin-top: 15px;">
+            <p>HTML/CSS/JS with some implementation of Sass.</p>
+            <a href="https://github.com/pntran25/helloworld" target="_blank">
+                <img src="images/computer.png" alt="what" style="width: 75%; display: block; margin: 20px auto;">
+            </a>
+            <button onclick="window.open('https://github.com/pntran25/helloworld', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">GitHub</button>
+        </div>
     </div>
+
+    <!---  HIGHLIGHTS -->
+
     <div id="highlightsPopup" class="popup">
         <div class="popup-header">
             <h2>Success</h2>
             <button class="popup-close" onclick="closePopup('highlightsPopup')">×</button>
-        </div>
+        </div><br>
         
         <ul style="list-style-type: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: space-around; border: none;">
             <li style="text-align: center; margin: 10px; border: 3px solid #000000 ; padding: 15px; border-radius: 10px; background-color: white;">
@@ -248,9 +280,11 @@
     <!-- Documents Popup -->
     <div id="documentsPopup" class="popup">
         <div class="popup-header">
+            
             <h2>Papers</h2>
             <button class="popup-close" onclick="closePopup('documentsPopup')">×</button>
         </div>
+        <br>
         <h3 style="text-align: center;">My Resume:</h3>
         <div style="text-align: center;">
             <a href="documents/CS Resume (17).pdf" target="_blank">
@@ -274,6 +308,7 @@
             <h2>Contact</h2>
             <button class="popup-close" onclick="closePopup('contactPopup')">×</button>
         </div>
+        <br>
         <p>Email: phitrann0810@gmail.com</p>
         <p>Outlook: pntran25@cougarnet.uh.edu</p>
         <p>Phone: (713) 452-9278</p>
