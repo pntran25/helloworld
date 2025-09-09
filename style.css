@@ -64,8 +64,9 @@ main {
 
 .glitch {
     background-color: black;
-    font-size: 3rem;
+    font-size: 1.6rem;
     font-weight: 700;
+    font-family: 'WINDOWS';
     text-transform: uppercase;
     color: wheat;
     position: relative;
@@ -190,7 +191,7 @@ main {
     height: 45px;
     background-color: rgb(184, 184, 184);
     color: black;
-    border-color: white;
+    border-color: rgb(1, 1, 1);
     border-style: solid;
     border-width: 2px;
     display: flex;
@@ -235,9 +236,20 @@ main {
 }
 
 .image-icons {
-    width: 50px;
-    height: 50px; 
-    
+    width: 7vw;
+    max-width: 50px;
+    min-width: 32px;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .image-icons {
+        width: 12vw;
+        max-width: 40px;
+        min-width: 24px;
+        height: auto;
+    }
 }
 
 .about, .competencies, .projects, .highlights, .documents, .contact {
@@ -285,12 +297,49 @@ main {
     max-height: 75%;
     overflow-y: auto; /* add scroll if content is too long */
     background-color: #f5efdd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding: 25px;
+    border: 4px solid rgb(142, 141, 141);
     border-radius: 10px;
+    padding: 25px;
     resize: both; /* allow resizing both horizontally and vertically */
     overflow: auto; /*  content isgona be scrollable when resized */
     padding-top: 0px; /* Add padding-top to ensure content doesn't go under the sticky header */
+}
+
+@media (max-width: 600px) {
+    .popup {
+        width: 98vw;
+        max-width: 46vw;
+        height: 98vh;
+        max-height: 46vh;
+        left: 20%;
+        top: 20%;
+        padding: 5%;
+        border-radius: 6px;
+        font-size: 0.65rem;
+    }
+    .popup-header {
+        height: 40px;
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+    .popup-header h2 {
+        font-size: 1.1rem;
+    }
+    .contact-form input, .contact-form textarea {
+        max-width: 95vw;
+        font-size: 1rem;
+        padding: 8px;
+    }
+    .contact-form input[type="submit"] {
+        padding: 8px 12px;
+        font-size: 1rem;
+    }
+    .projects-list {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 10px;
+        font-size: 0.65rem;
+    }
 }
 
 .popup-resize-handle {
@@ -309,12 +358,10 @@ main {
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 2;
     background: #f5efdd;
-    border-bottom: 3px solid #2e2e2e;
-    margin-bottom: 0; /* Remove margin to prevent content peeking through */
+    border-bottom: 3px solid #aaaaaa;
     height: 50px;
-    cursor: move; 
+    cursor: move;
     background-clip: padding-box;
     margin-top: 10px;
 }
@@ -414,4 +461,99 @@ main {
 /* Remove top margin from first child after .popup-header to prevent gap */
 .popup > .popup-header + * {
     margin-top: 0 !important;
+}
+
+/* About Popup Classes */
+.about-photo {
+    width: 35%;
+    display: block;
+    margin: 0 auto;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.about-name {
+    text-align: center;
+}
+
+.about-title {
+    text-align: center;
+}
+
+.about-summary {
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.about-divider {
+    border: 1px solid black;
+    margin-top: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.about-description {
+    font-size: 1m;
+}
+
+.about-education {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: rgb(251, 250, 242);
+    border-radius: 15px;
+    padding: 25px;
+    border: 3px solid black;
+}
+
+.about-uh {
+    width: 25%;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.about-edu-details {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.about-edu-details h4,
+.about-edu-details h5,
+.about-edu-details p,
+.about-edu-details ul,
+.about-edu-details li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Responsive adjustments for About popup */
+@media (max-width: 600px) {
+    .about-photo {
+        width: 95% !important;
+        max-width: 250px !important;
+    }
+    .about-summary {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 5px !important;
+    }
+    .about-education {
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 10px !important;
+    }
+    .about-uh {
+        margin: 0 0 10px 0 !important;
+        width: 60vw !important;
+        max-width: 180px !important;
+    }
+    .about-edu-details {
+        margin: 0 !important;
+        text-align: center !important;
+    }
 }
