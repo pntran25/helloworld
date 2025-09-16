@@ -45,6 +45,18 @@ function showPopup(popupId) {
     const popup = document.getElementById(popupId);
     bringPopupToFront(popup);
     popup.style.display = 'block';
+    // Center the popup, clamp to viewport
+    setTimeout(function() {
+        const popupWidth = popup.offsetWidth;
+        const popupHeight = popup.offsetHeight;
+        const winWidth = window.innerWidth;
+        const winHeight = window.innerHeight;
+        let top = Math.max(0, (winHeight - popupHeight) / 2);
+        let left = Math.max(0, (winWidth - popupWidth) / 2);
+        popup.style.top = top + 'px';
+        popup.style.left = left + 'px';
+        popup.style.transform = 'none';
+    }, 0);
 }
 
 function closePopup(popupId) {
@@ -57,12 +69,16 @@ function makeDraggable(popupId) {
     const popup = document.getElementById(popupId);
     const header = popup.querySelector('.popup-header');
     let offsetX = 0, offsetY = 0, mouseX = 0, mouseY = 0;
+    let dragging = false;
+    let touchStartX = 0, touchStartY = 0;
 
+    // Mouse events
     header.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
+        dragging = true;
         mouseX = e.clientX;
         mouseY = e.clientY;
         document.onmouseup = closeDragElement;
@@ -70,19 +86,71 @@ function makeDraggable(popupId) {
     }
 
     function elementDrag(e) {
+        if (!dragging) return;
         e = e || window.event;
         e.preventDefault();
         offsetX = mouseX - e.clientX;
         offsetY = mouseY - e.clientY;
         mouseX = e.clientX;
         mouseY = e.clientY;
-        popup.style.top = (popup.offsetTop - offsetY) + "px";
-        popup.style.left = (popup.offsetLeft - offsetX) + "px";
-    } 
+    let newTop = popup.offsetTop - offsetY;
+    let newLeft = popup.offsetLeft - offsetX;
+    // Clamp boundaries
+    const minTop = 0;
+    const minLeft = 0;
+    const maxTop = window.innerHeight - popup.offsetHeight;
+    const maxLeft = window.innerWidth - popup.offsetWidth;
+    newTop = Math.max(minTop, Math.min(newTop, maxTop));
+    newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
+    popup.style.top = newTop + "px";
+    popup.style.left = newLeft + "px";
+    popup.style.transform = "none";
+    }
 
     function closeDragElement() {
+        dragging = false;
         document.onmouseup = null;
         document.onmousemove = null;
+    }
+
+    // Touch events
+    header.addEventListener('touchstart', dragTouchStart, {passive: false});
+    function dragTouchStart(e) {
+        if (e.touches.length !== 1) return;
+        dragging = true;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        mouseX = touchStartX;
+        mouseY = touchStartY;
+        document.addEventListener('touchmove', elementTouchDrag, {passive: false});
+        document.addEventListener('touchend', closeTouchDrag, {passive: false});
+    }
+    function elementTouchDrag(e) {
+        if (!dragging || e.touches.length !== 1) return;
+        e.preventDefault();
+        const clientX = e.touches[0].clientX;
+        const clientY = e.touches[0].clientY;
+        offsetX = mouseX - clientX;
+        offsetY = mouseY - clientY;
+        mouseX = clientX;
+        mouseY = clientY;
+        let newTop = popup.offsetTop - offsetY;
+        let newLeft = popup.offsetLeft - offsetX;
+        // Clamp boundaries
+        const minTop = 0;
+        const minLeft = 0;
+        const maxTop = window.innerHeight - popup.offsetHeight;
+        const maxLeft = window.innerWidth - popup.offsetWidth;
+        newTop = Math.max(minTop, Math.min(newTop, maxTop));
+        newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
+        popup.style.top = newTop + "px";
+        popup.style.left = newLeft + "px";
+        popup.style.transform = "none";
+    }
+    function closeTouchDrag(e) {
+        dragging = false;
+        document.removeEventListener('touchmove', elementTouchDrag, {passive: false});
+        document.removeEventListener('touchend', closeTouchDrag, {passive: false});
     }
 }
 
@@ -135,6 +203,14 @@ function getRandomPosition() {
     return { x: randomX, y: randomY };
 }
 
+function playClickSound() {
+    var click = new Audio('sound/mouse.mp3');
+    click.play();
+    click.volume = 0.1;
+}
+
+document.addEventListener('click', playClickSound);
+
 document.addEventListener('DOMContentLoaded', function() {
     makeDraggable('aboutPopup');
     makeDraggable('competenciesPopup');
@@ -150,18 +226,39 @@ document.addEventListener('DOMContentLoaded', function() {
     makeResizable('documentsPopup');
     makeResizable('contactPopup');
 
+
     const chatBubble = document.createElement('div');
     chatBubble.className = 'chat-bubble';
     chatBubble.textContent = getRandomMessage();
     document.querySelector('.eyes-deco').appendChild(chatBubble);
 
+    // Mouse hover
     document.querySelector('.eyes-deco').addEventListener('mouseover', function() {
         chatBubble.textContent = getRandomMessage();
         const position = getRandomPosition();
         chatBubble.style.transform = `translate(${position.x}px, ${position.y}px)`;
+        chatBubble.style.display = 'flex';
+    });
+    document.querySelector('.eyes-deco').addEventListener('mouseout', function() {
+        chatBubble.style.display = 'none';
     });
 
-    // Add click event to bring popup to front when clicked
+    // Touch tap and hold
+    let chatBubbleTimeout;
+    document.querySelector('.eyes-deco').addEventListener('touchstart', function(e) {
+        chatBubbleTimeout = setTimeout(function() {
+            chatBubble.textContent = getRandomMessage();
+            const position = getRandomPosition();
+            chatBubble.style.transform = `translate(${position.x}px, ${position.y}px)`;
+            chatBubble.style.display = 'flex';
+        }, 350); // shosow after 350ms hold
+    });
+    document.querySelector('.eyes-deco').addEventListener('touchend', function(e) {
+        clearTimeout(chatBubbleTimeout);
+        chatBubble.style.display = 'none';
+    });
+
+    //pop up thingy
     const popups = document.querySelectorAll('.popup');
     popups.forEach(popup => {
         popup.addEventListener('mousedown', function() {
@@ -169,3 +266,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+

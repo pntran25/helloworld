@@ -103,7 +103,7 @@
         <h3 class="about-title">Aspiring Software Engineer and Developer</h3>
         <div class="about-summary">
             <hr class="about-divider">
-            <p class="about-description">Hi! I'm Phi Tran, a freshman Computer Science student at the University of Houston. I'm passionate about software development and programming, with a current love on game development. I'm always eager to learn new technologies including machine learning AI, cybersecurity, database administration, and more! I'm currently seeking internship opportunities to gain more experience and contribute to a team. Feel free to contact me!</p>
+            <p class="about-description">Hi! I'm Phi Tran, a freshman Computer Science student at the University of Houston. I'm passionate about building innovative software solutions and exploring new areas in technology. I'm always eager to learn new technologies including machine learning AI, cybersecurity, database administration, and more! I'm currently seeking internship opportunities to gain more experience and contribute to a team. Feel free to contact me!</p>
         </div><br>
         <div class="about-education">
             <img src="images/uh.png" alt="UH" class="about-uh">
@@ -187,6 +187,30 @@
                     <p>React</p>
                     <img src="images/react.png" alt="React" class="skills-icon">
                 </li>
+                <li>
+                    <p>Spring Boot</p>
+                    <img src="images/springboot.png" alt="Spring Boot" class="skills-icon">
+                </li>
+                <li>
+                    <p>Maven</p>
+                    <img src="images/maven.png" alt="Maven" class="skills-icon">
+                </li>
+                <li>
+                    <p>PostgreSQL</p>
+                    <img src="images/postgresql.png" alt="PostgreSQL" class="skills-icon">
+                </li>
+                <li>
+                    <p>AWS</p>
+                    <img src="images/aws.png" alt="AWS" class="skills-icon">
+                </li>
+                <li>
+                    <p>OpenCV</p>
+                    <img src="images/opencv.png" alt="OpenCV" class="skills-icon">
+                </li>
+                <li>
+                    <p>Pandas</p>
+                    <img src="images/pandas.png" alt="Pandas" class="skills-icon">
+                </li>
             </ul>
         </div>
     </div>
@@ -197,51 +221,103 @@
             <h2>Projects</h2>
             <button class="popup-close" onclick="closePopup('projectsPopup')">×</button>
         </div>
-        <br>
         <div class="projects-list">
-            <h3>Sonny</h3><hr style="border: 1px solid black; margin-top: 15px;">
-            <p>Co-led a cross-functional team project with 14 team members from December 2024 to present, engineering an indie-thriller video game. Integrated AI mechanics (NavMesh), collaborated using version control in GitHub Desktop, and developed multiple objected-orientated C# scripts to fully enhance different game mechanics. </p>
+            <div class="project-title-row">
+            <h3 class="project-title">Codexa</h3>
+                <span class="project-icons">
+                    <img src="images/java.png" alt="Java" class="project-tech-icon">
+                    <img src="images/js.png" alt="Javascrit" class="project-tech-icon">
+                    <img src="images/react.png" alt="React" class="project-tech-icon">
+                    <img src="images/springboot.png" alt="Spring Boot" class="project-tech-icon">
+                    <img src="images/maven.png" alt="Maven" class="project-tech-icon">
+                    <img src="images/postgresql.png" alt="PostgreSQL" class="project-tech-icon">
+                    <img src="images/aws.png" alt="AWS" class="project-tech-icon">
+                </span>
+            </div>
+            <hr class="project-divider">
+            <p class="project-description">This project is a full-stack coding platform that allows users to solve programming problems, submit code, and review their submissions. It uses Java (Spring Boot) for the backend, PostgreSQL for data storage, and React for the frontend, integrating REST APIs, JWT authentication, and cloud deployment on AWS for a scalable and reliable user experience.</p>
+            <a href="https://github.com/pntran25/codeplatform" target="_blank">
+                <img src="images/codexa.png" alt="codwa" class="project-image">
+            </a>
+            <button onclick="window.open('https://github.com/odstpilot/codeplatform', '_blank')" class="project-link">GitHub</button>
+        </div>
+        <div class="projects-list">
+            <div class="project-title-row">
+                <h3 class="project-title">Sonny</h3>
+                <span class="project-icons">
+                    <img src="images/csharp.png" alt="C#" class="project-tech-icon">
+                    <img src="images/unity.png" alt="Unity" class="project-tech-icon">
+                    <img src="images/git.png" alt="Git" class="project-tech-icon">
+                </span>
+            </div>
+            <hr class="project-divider">
+            <p class="project-description">Co-led a cross-functional team project with 14 team members from December 2024 to present, engineering an indie-thriller video game. Integrated AI mechanics (NavMesh), collaborated using version control in GitHub Desktop, and developed multiple objected-orientated C# scripts to fully enhance different game mechanics.</p>
             <a href="https://github.com/odstpilot/ProjectSonny" target="_blank">
-                <img src="images/sonny.png" alt="what" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+                <img src="images/sonny.png" alt="Sonny" class="project-image">
             </a>
-            <button onclick="window.open('https://github.com/odstpilot/ProjectSonny', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">GitHub</button>
+            <button onclick="window.open('https://github.com/odstpilot/ProjectSonny', '_blank')" class="project-link">GitHub</button>
         </div>
-        <br>
-         <div class="projects-list">
-            <h3>AI (KNN) Color Detector</h3><hr style="border: 1px solid black; margin-top: 15px;">
-            <p>Implemented KNN to find the color of a pixel from an image. Developed using Python, OpenCV, Pandas, and KNN to fully make the learn and recieve colors from the dataset and finding the accurate color of the pixel</p>
+        <div class="projects-list">
+            <div class="project-title-row">
+                <h3 class="project-title">AI (KNN) Color Detector</h3>
+                <span class="project-icons">
+                    <img src="images/python.png" alt="Python" class="project-tech-icon">
+                    <img src="images/opencv.png" alt="OpenCV" class="project-tech-icon">
+                    <img src="images/pandas.png" alt="Pandas" class="project-tech-icon">
+                </span>
+            </div>
+            <hr class="project-divider">
+            <p class="project-description">Implemented KNN to find the color of a pixel from an image. Developed using Python, OpenCV, Pandas, and KNN to fully make the learn and recieve colors from the dataset and finding the accurate color of the pixel.</p>
             <a href="https://github.com/pntran25/color-detection" target="_blank">
-                <img src="images/color-me.png" alt="what" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+                <img src="images/color-me.png" alt="Color Detector" class="project-image">
             </a>
-            <button onclick="window.open('https://github.com/pntran25/color-detection', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">GitHub</button>
+            <button onclick="window.open('https://github.com/pntran25/color-detection', '_blank')" class="project-link">GitHub</button>
         </div>
-        <br>
         <div class="projects-list">
-            <h3>Apian Wish</h3><hr style="border: 1px solid black; margin-top: 15px;">
-            <p>A video game team project created for competition in the Technological Student Association from September 2023 to April 2024. I was the team lead, developing game mechanics using C# scripts in Unity Engine.</p>
+            <div class="project-title-row">
+                <h3 class="project-title">Apian Wish</h3>
+                <span class="project-icons">
+                    <img src="images/csharp.png" alt="C#" class="project-tech-icon">
+                    <img src="images/unity.png" alt="Unity" class="project-tech-icon">
+                </span>
+            </div>
+            <hr class="project-divider">
+            <p class="project-description">A video game team project created for competition in the Technological Student Association from September 2023 to April 2024. I was the team lead, developing game mechanics using C# scripts in Unity Engine.</p>
             <a href="https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024" target="_blank">
-                <img src="images/apian wish.png" alt="TSA" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+                <img src="images/apian wish.png" alt="Apian Wish" class="project-image">
             </a>
-            <button onclick="window.open('https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">Live</button>
+            <button onclick="window.open('https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024', '_blank')" class="project-link">Live</button>
         </div>
-        <br>
         <div class="projects-list">
-            <h3>Treasure X Truth</h3><hr style="border: 1px solid black; margin-top: 15px;">
-            <p>My first video game design when I first joined TSA (Technological Student Association) beginning in September 2022 to April 2023. I volunteered to be the team lead of 5 members, rapidly learning how to develop and code core game mechanics using C# scripts in Unity Engine.</p>
+            <div class="project-title-row">
+                <h3 class="project-title">Treasure X Truth</h3>
+                <span class="project-icons">
+                    <img src="images/csharp.png" alt="C#" class="project-tech-icon">
+                    <img src="images/unity.png" alt="Unity" class="project-tech-icon">
+                </span>
+            </div>
+            <hr class="project-divider">
+            <p class="project-description">My first video game design when I first joined TSA (Technological Student Association) beginning in September 2022 to April 2023. I volunteered to be the team lead of 5 members, rapidly learning how to develop and code core game mechanics using C# scripts in Unity Engine.</p>
             <a href="https://play.unity.com/en/games/a3030501-fd63-459c-b98b-b0a985211b4d/treasure-x-truth" target="_blank">
-                <img src="images/treasure.png" alt="TSA" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
+                <img src="images/treasure.png" alt="Treasure X Truth" class="project-image">
             </a>
-            <button onclick="window.open('https://play.unity.com/en/games/a3030501-fd63-459c-b98b-b0a985211b4d/treasure-x-truth', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">Live</button>
+            <button onclick="window.open('https://play.unity.com/en/games/a3030501-fd63-459c-b98b-b0a985211b4d/treasure-x-truth', '_blank')" class="project-link">Live</button>
         </div>
-        <br>
-       
         <div class="projects-list">
-            <h3>Portfolio Website</h3><hr style="border: 1px solid black; margin-top: 15px;">
-            <p>HTML/CSS/JS with some implementation of Sass.</p>
+            <div class="project-title-row">
+                <h3 class="project-title">Portfolio Website</h3>
+                <span class="project-icons">
+                    <img src="images/html.png" alt="HTML" class="project-tech-icon">
+                    <img src="images/css.png" alt="CSS" class="project-tech-icon">
+                    <img src="images/js.png" alt="JavaScript" class="project-tech-icon">
+                </span>
+            </div>
+            <hr class="project-divider">
+            <p class="project-description">HTML/CSS/JS with some implementation of Sass. It's what you're looking at right now!</p>
             <a href="https://github.com/pntran25/helloworld" target="_blank">
-                <img src="images/computer.png" alt="what" style="width: 75%; display: block; margin: 20px auto;">
+                <img src="images/computer.png" alt="Portfolio Website" class="project-image">
             </a>
-            <button onclick="window.open('https://github.com/pntran25/helloworld', '_blank')" style="background-color: black; color: white; border-radius: 10px; font-family: WINDOWS; cursor: pointer; width: 100px; height: 50px;">GitHub</button>
+            <button onclick="window.open('https://github.com/pntran25/helloworld', '_blank')" class="project-link">GitHub</button>
         </div>
     </div>
 
@@ -251,31 +327,26 @@
         <div class="popup-header">
             <h2>Success</h2>
             <button class="popup-close" onclick="closePopup('highlightsPopup')">×</button>
-        </div><br>
-        
-        <ul style="list-style-type: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: space-around; border: none;">
-            <li style="text-align: center; margin: 10px; border: 3px solid #000000 ; padding: 15px; border-radius: 10px; background-color: white;">
-                <h3>Technology Student Association 1st Place Winner, 2024</h3>
-                <h3>Video Game Design</h3>
-                
-                <hr style="border: 1px solid black; margin-top: 15px; margin-right: 20px; margin-left: 20px;">
-                <p style="margin-left: 25px; margin-right: 25px;">From September 2023 to April 2024, as a competitor for TSA (Tecnological Student Association), I led a team of 5 members as a lead developer and team lead using Unity Engine with C# scripts, naming our project "Apian Wish". We placed 1st, competing aganist 10+ different schools in Video Game Design. This project was a learning curve with trivial debugging and coding 50+ scripts, inspired to improve from my previous video game project, "Treasure X Truth" that placed 2nd in 2023.</p>
-                <a href="https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024" target="_blank">
-                    <img src="images/tsa.jpg" alt="TSA" style="width: 75%; display: block; margin: 20px auto; border: 3px solid black; border-radius: 10px;">
-                </a>   
+        </div>
+        <ul class="highlights-list">
+            <li class="highlight-item">
+                <h3 class="highlight-title">Technology Student Association 1st Place Winner, 2024</h3>
+                <h3 class="highlight-title">Video Game Design</h3>
+                <hr class="highlight-divider">
+                <p class="highlight-description">From September 2023 to April 2024, as a competitor for TSA (Technological Student Association), I led a team of 5 members as a lead developer and team lead using Unity Engine with C# scripts, naming our project "Apian Wish". We placed 1st, competing aganist 10+ different schools in Video Game Design. This project was a learning curve with trivial debugging and coding 50+ scripts, inspired to improve from my previous video game project, "Treasure X Truth" that placed 2nd in 2023.</p>
+                <img src="images/tsa.jpg" alt="TSA" class="highlight-image">
+            </li>
+            <li class="highlight-item">
+                <h3 class="highlight-title">Academic Excellence Scholarship</h3>
+                <a href="documents/academic.pdf" target="_blank">
+                    <img src="images/scholarship.png" alt="Scholarship" class="highlight-image">
+                </a>
+                <h3 class="highlight-title">University of Houston Dean's List</h3>
+                <a href="documents/deanslist.pdf" target="_blank">
+                    <img src="images/deanslist.png" alt="Dean's List" class="highlight-image">
+                </a>
             </li>
         </ul>
-        <div style="text-align: center; margin: 10px; border: 3px solid #000000 ; padding: 15px; border-radius: 10px; background-color: white;">
-            <h3>Academic Excellence Scholarship</h3>
-            
-            <a href="documents/academic.pdf" target="_blank">
-                <img src="images/scholarship.png" alt="Scholarship" style="width: 50%; margin: 15px auto; border: 3px solid black; border-radius: 10px;">
-            </a>
-            <h3>University of Houston Dean's List</h3>
-            <a href="documents/deanslist.pdf" target="_blank">
-                <img src="images/deanslist.png" alt="Dean's List" style="width: 50%; margin: 15px auto; border: 3px solid black; border-radius: 10px;">
-            </a>
-        </div>
     </div>
     <!-- Documents Popup -->
     <div id="documentsPopup" class="popup">
@@ -287,8 +358,12 @@
         <br>
         <h3 style="text-align: center;">My Resume:</h3>
         <div style="text-align: center;">
-            <a href="documents/CS Resume (23).pdf" target="_blank">
-            <img src="images/resumethumbnail.png" alt="Resume" style="width: 70%; display: block; margin: 0 auto; border: 3px solid black; border-radius: 10px;">
+            <a href="documents/CS Resume (24).pdf" target="_blank">
+                <img src="images/resumethumbnail.png" alt="Resume" style="width: 70%; display: block; margin: 0 auto; border: 3px solid black; border-radius: 10px;">
+            </a>
+            <br>
+            <a href="documents/CS Resume (24).pdf" target="_blank">
+                <button class="project-link">Download</button>
             </a>
         </div>
         <h3 style="text-align: center;">My References:</h3>
