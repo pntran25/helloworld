@@ -142,7 +142,7 @@ main {
     src: url('fonts/w95fa[1].ttf');
 }      
 .image-button::after {
-    content: "Hi Valentin, click on Phi's Computer!";
+    content: "Click on Phi's Computer!";
     display: block;
     text-align: center;
     font-size: 1rem;
