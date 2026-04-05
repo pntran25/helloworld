@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <!-- Briefcase body -->
+  <rect x="4" y="16" width="40" height="26" rx="2" fill="#808080" stroke="#000" stroke-width="2"/>
+  <rect x="5" y="17" width="38" height="24" fill="#c0c0c0"/>
+  <rect x="6" y="18" width="36" height="22" fill="#808080"/>
+  <rect x="7" y="19" width="34" height="20" fill="#d4d0c8"/>
+  <!-- Handle -->
+  <rect x="16" y="8" width="16" height="10" rx="2" fill="none" stroke="#000" stroke-width="2"/>
+  <rect x="18" y="10" width="12" height="6" fill="#d2b48c"/>
+  <!-- Clasp -->
+  <rect x="20" y="26" width="8" height="6" rx="1" fill="#c0c0c0" stroke="#000" stroke-width="1.5"/>
+  <rect x="22" y="28" width="4" height="2" fill="#ffd700"/>
+  <!-- Highlight lines -->
+  <line x1="8" y1="20" x2="40" y2="20" stroke="#fff" stroke-width="1" opacity="0.5"/>
+  <line x1="8" y1="38" x2="40" y2="38" stroke="#404040" stroke-width="1" opacity="0.4"/>
+</svg>

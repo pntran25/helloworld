@@ -5,79 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <button class="image-button" onclick="afterbutton()"></button>
     <main>
         <div class="portfolio-content" style="display: none;">
-            <footer class="footer">
-                <img class="image-phi" src="images/me.jpg" alt="phi">
-                <p style="font-family: WINDOWS;">PHI TRAN</p>
-                <div class="image-links" style="margin-right: auto; margin-left: 90px;">
-                    <a href="https://www.linkedin.com/in/pntran25/" target="_blank">
-                        <img class="image-links" src="images/linkedin.png" alt="LinkedIn">
-                    </a> 
-                    <a href="https://github.com/pntran25" target="_blank">
-                        <img class="image-links" src="images/github.png" alt="GitHub">
-                    </a>     
-                </div>
-            </footer>
-            
-            <div>
-                <div class="about">
-                    <button onclick="showPopup('aboutPopup')">
-                        <div class="text-under-icon">
-                            <img class="image-icons" src="images/aboutme.png" alt="About">     
-                            <p style="font-family: WINDOWS;">ABOUT</p>
-                        </div>
-                    </button>
-                </div>        
-                <div class="competencies">
-                    <button onclick="showPopup('competenciesPopup')">
-                        <div class="text-under-icon">
-                            <img class="image-icons" src="images/competencies.png" alt="Competencies">             
-                            <p style="font-family: WINDOWS;">SKILLS</p>          
-                        </div>
-                        
-                    </button>
-                </div>
-                <div class="projects">
-                    <button onclick="showPopup('projectsPopup')">
-                        <div class="text-under-icon">
-                            <img class="image-icons" src="images/projects.png" alt="Projects">
-                            <p style="font-family: WINDOWS;">PROJECTS</p>
-                        </div>
-                    </button>
-                </div>
-                <div class="highlights">
-                    <button onclick="showPopup('highlightsPopup')">
-                        <div class="text-under-icon">
-                            <img class="image-icons" src="images/highlights.png" alt="Highlights">                     
-                            <p style="font-family: WINDOWS;">SUCCESS</p>
-                        </div>
-
-                    </button>
-                </div>
-                <div class="documents">
-                    <button onclick="showPopup('documentsPopup')">
-                        <div class="text-under-icon">
-                            <img class="image-icons" src="images/documents.png" alt="Documents"> 
-                            <p style="font-family: WINDOWS;">PAPERS</p>
-                        </div>       
-                    </button>
-                </div>      
-                <div class="contact">
-                    <button onclick="showPopup('contactPopup')">
-                        <div class="text-under-icon">
-                            <img class="image-icons" src="images/contactme.png" alt="Documents"> 
-                            <p style="font-family: WINDOWS;">CONTACT</p>
-                        </div>                                       
-                     </button>
-                </div>
+            <!-- Desktop Icons Grid -->
+            <div class="desktop-icons">
+                <button class="desktop-icon" onclick="showPopup('aboutPopup')">
+                    <img class="image-icons" src="images/aboutme.png" alt="About">
+                    <span>About</span>
+                </button>
+                <button class="desktop-icon" onclick="showPopup('competenciesPopup')">
+                    <img class="image-icons" src="images/competencies.png" alt="Competencies">
+                    <span>Skills</span>
+                </button>
+                <button class="desktop-icon" onclick="showPopup('experiencePopup')">
+                    <img class="image-icons" src="images/experience.svg" alt="Experience">
+                    <span>Experience</span>
+                </button>
+                <button class="desktop-icon" onclick="showPopup('projectsPopup')">
+                    <img class="image-icons" src="images/projects.png" alt="Projects">
+                    <span>Projects</span>
+                </button>
+                <button class="desktop-icon" onclick="showPopup('highlightsPopup')">
+                    <img class="image-icons" src="images/highlights.png" alt="Highlights">
+                    <span>Success</span>
+                </button>
+                <button class="desktop-icon" onclick="showPopup('documentsPopup')">
+                    <img class="image-icons" src="images/documents.png" alt="Documents">
+                    <span>Papers</span>
+                </button>
+                <button class="desktop-icon" onclick="showPopup('contactPopup')">
+                    <img class="image-icons" src="images/contactme.png" alt="Contact">
+                    <span>Contact</span>
+                </button>
                 <div class="eyes-deco" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                    <img src="images/faceclosed.png" alt="face" style="opacity: 0.25; display: block; width: 25vw; height: auto;">
+                    <img src="images/faceclosed.png" alt="face" style="opacity: 0.20; display: block; width: 25vw; height: auto;">
                 </div>
+            </div>
+
+            <!-- Win95 Taskbar -->
+            <div class="taskbar">
+                <div class="taskbar-start">
+                    <img class="image-phi" src="images/me.jpg" alt="phi">
+                    <span class="taskbar-name">Phi Tran</span>
+                </div>
+                <div class="taskbar-links">
+                    <a href="https://www.linkedin.com/in/pntran25/" target="_blank">
+                        <img src="images/linkedin.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/pntran25" target="_blank">
+                        <img src="images/github.png" alt="GitHub">
+                    </a>
+                </div>
+                <div class="taskbar-clock" id="taskbarClock"></div>
             </div>
         </div>
     </main> 
@@ -95,15 +78,21 @@
     <!-- About Popup -->
     <div id="aboutPopup" class="popup">
         <div class="popup-header">
-            <h2>About Me</h2>
-            <button class="popup-close" onclick="closePopup('aboutPopup')">×</button>
-        </div><br>
+            <span class="popup-title">About Me</span>
+            <div class="win-buttons">
+                <button class="win-btn win-minimize" onclick="closePopup('aboutPopup')">_</button>
+                <button class="win-btn win-maximize" onclick="toggleMaximize('aboutPopup')">□</button>
+                <button class="win-btn win-close" onclick="closePopup('aboutPopup')">×</button>
+            </div>
+        </div>
         <img src="images/me.jpg" alt="Phi Tran" class="about-photo">
         <h1 class="about-name">Phi Tran</h1>
         <h3 class="about-title">Aspiring Software Engineer and Developer</h3>
         <div class="about-summary">
             <hr class="about-divider">
-            <p class="about-description">Hi! I'm Phi Tran, a sophomore Computer Science student at the University of Houston. I'm passionate about building innovative software solutions and exploring new areas in technology. I'm always eager to learn new technologies including machine learning AI, cybersecurity, database administration, and more! I'm currently seeking internship opportunities to gain more experience and contribute to a team. Feel free to contact me!</p>
+            <p class="about-description collapsible-text">Hi! I'm Phi Tran, a sophomore Computer Science student at the University of Houston. I'm passionate about building innovative software solutions and exploring new areas in technology. I'm always eager to learn new technologies including machine learning AI, cybersecurity, database administration, and more! I'm currently seeking internship opportunities to gain more experience and contribute to a team. Feel free to contact me!</p>
+            <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
+            <hr class="about-divider">
         </div><br>
         <div class="about-education">
             <img src="images/uh.png" alt="UH" class="about-uh">
@@ -120,28 +109,38 @@
         <h3 class="about-title">Wanna know more?</h3>
         <div class="about-summary">
             <hr class="about-divider">
-            <p class="about-description">I'm competitive and I love being active! SPORTS!!!!!!!!!!!!!!! (I just play for fun)</p>
-            <ul>
-                <li>Basketball</li>
-                <li>Bowling</li>
-                <li>Table tennis</li>
-                <li>Pickleball</li>
-            </ul>
-            <p class="about-description">Staying active helps me maintain focus and brings out my competitive spirit, which I also apply to my programming and academic pursuits.</p>
+            <div class="collapsible-text">
+                <p class="about-description">I'm competitive and I love being active! SPORTS!!!!!!!!!!!!!!! (I just play for fun)</p>
+                <ul>
+                    <li>Basketball</li>
+                    <li>Bowling</li>
+                    <li>Table tennis</li>
+                    <li>Pickleball</li>
+                </ul>
+                <p class="about-description">Staying active helps me maintain focus and brings out my competitive spirit, which I also apply to my programming and academic pursuits.</p>
+            </div>
+            <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
+        </div>
+        <div class="popup-status-bar">
+            <span class="status-icon"></span> Ready
         </div>
     </div>
 
     <!-- Competencies Popup -->
     <div id="competenciesPopup" class="popup">
         <div class="popup-header">
-            <h2>Skills</h2>
-            <button class="popup-close" onclick="closePopup('competenciesPopup')">×</button>
+            <span class="popup-title">Skills</span>
+            <div class="win-buttons">
+                <button class="win-btn win-minimize" onclick="closePopup('competenciesPopup')">_</button>
+                <button class="win-btn win-maximize" onclick="toggleMaximize('competenciesPopup')">□</button>
+                <button class="win-btn win-close" onclick="closePopup('competenciesPopup')">×</button>
+            </div>
         </div>
-        <div style="text-align: center; margin-left: 50px; margin-right: 50px;">
-            <h4 style="display: inline-block; padding: 15px; background-color: white; border-radius: 10px; border: solid 3px black;">Programming Languages</h4>
-            <ul class="skills-list"><br>
+        <div class="skills-section">
+            <h4 class="skills-category">Programming Languages</h4>
+            <ul class="skills-list">
                 <li>
-                    <p>C++<p>
+                    <p>C++</p>
                     <img src="images/C++.png" alt="C++" class="skills-icon">
                 </li>
                 <li>
@@ -166,10 +165,10 @@
                 </li>                
                 <li>
                     <p>Java</p>
-                    <img src="images/java.png" alt="JavaScript" class="skills-icon">
+                    <img src="images/java.png" alt="Java" class="skills-icon">
                 </li>                
             </ul>
-            <h4 style="display: inline-block; text-align: center; margin: 10px;padding: 15px; background-color: white; border-radius: 10px; border: solid 3px black;">Tools and Technologies</h4>
+            <h4 class="skills-category">Tools and Technologies</h4>
             <ul class="skills-list">
                 <li>
                     <p>Unity</p>
@@ -225,20 +224,27 @@
                 </li>
             </ul>
         </div>
+        <div class="popup-status-bar">
+            <span class="status-icon"></span> 7 languages &bull; 13 tools loaded
+        </div>
     </div>
 
     <!-- Projects Popup -->
     <div id="projectsPopup" class="popup">
         <div class="popup-header">
-            <h2>Projects</h2>
-            <button class="popup-close" onclick="closePopup('projectsPopup')">×</button>
+            <span class="popup-title">Projects</span>
+            <div class="win-buttons">
+                <button class="win-btn win-minimize" onclick="closePopup('projectsPopup')">_</button>
+                <button class="win-btn win-maximize" onclick="toggleMaximize('projectsPopup')">□</button>
+                <button class="win-btn win-close" onclick="closePopup('projectsPopup')">×</button>
+            </div>
         </div>
         <div class="projects-list">
             <div class="project-title-row">
             <h3 class="project-title">Codexa</h3>
                 <span class="project-icons">
                     <img src="images/java.png" alt="Java" class="project-tech-icon">
-                    <img src="images/js.png" alt="Javascrit" class="project-tech-icon">
+                    <img src="images/js.png" alt="JavaScript" class="project-tech-icon">
                     <img src="images/react.png" alt="React" class="project-tech-icon">
                     <img src="images/springboot.png" alt="Spring Boot" class="project-tech-icon">
                     <img src="images/maven.png" alt="Maven" class="project-tech-icon">
@@ -247,9 +253,10 @@
                 </span>
             </div>
             <hr class="project-divider">
-            <p class="project-description">This project is a full-stack coding platform that allows users to solve programming problems, submit code, and review their submissions. It uses Java (Spring Boot) for the backend, PostgreSQL for data storage, and React for the frontend, integrating REST APIs, JWT authentication, and cloud deployment on AWS for a scalable and reliable user experience.</p>
+            <p class="project-description collapsible-text">This project is a full-stack coding platform that allows users to solve programming problems, submit code, and review their submissions. It uses Java (Spring Boot) for the backend, PostgreSQL for data storage, and React for the frontend, integrating REST APIs, JWT authentication, and cloud deployment on AWS for a scalable and reliable user experience.</p>
+            <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
             <a href="https://github.com/pntran25/codeplatform" target="_blank">
-                <img src="images/codexa.png" alt="codwa" class="project-image">
+                <img src="images/codexa.png" alt="Codexa" class="project-image">
             </a>
             <button onclick="window.open('https://github.com/pntran25/codeplatform', '_blank')" class="project-link">GitHub</button>
         </div>
@@ -263,7 +270,8 @@
                 </span>
             </div>
             <hr class="project-divider">
-            <p class="project-description">Co-led a cross-functional team project with 14 team members from December 2024 to present, engineering an indie-thriller video game. Integrated AI mechanics (NavMesh), collaborated using version control in GitHub Desktop, and developed multiple objected-orientated C# scripts to fully enhance different game mechanics.</p>
+            <p class="project-description collapsible-text">Co-led a cross-functional team project with 14 team members from December 2024 to present, engineering an indie-thriller video game. Integrated AI mechanics (NavMesh), collaborated using version control in GitHub Desktop, and developed multiple objected-orientated C# scripts to fully enhance different game mechanics.</p>
+            <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
             <a href="https://github.com/odstpilot/ProjectSonny" target="_blank">
                 <img src="images/sonny.png" alt="Sonny" class="project-image">
             </a>
@@ -279,7 +287,8 @@
                 </span>
             </div>
             <hr class="project-divider">
-            <p class="project-description">Implemented KNN to find the color of a pixel from an image. Developed using Python, OpenCV, Pandas, and KNN to fully make the learn and recieve colors from the dataset and finding the accurate color of the pixel.</p>
+            <p class="project-description collapsible-text">Implemented KNN to find the color of a pixel from an image. Developed using Python, OpenCV, Pandas, and KNN to fully make the learn and recieve colors from the dataset and finding the accurate color of the pixel.</p>
+            <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
             <a href="https://github.com/pntran25/color-detection" target="_blank">
                 <img src="images/color-me.png" alt="Color Detector" class="project-image">
             </a>
@@ -294,7 +303,8 @@
                 </span>
             </div>
             <hr class="project-divider">
-            <p class="project-description">A video game team project created for competition in the Technological Student Association from September 2023 to April 2024. I was the team lead, developing game mechanics using C# scripts in Unity Engine.</p>
+            <p class="project-description collapsible-text">A video game team project created for competition in the Technological Student Association from September 2023 to April 2024. I was the team lead, developing game mechanics using C# scripts in Unity Engine.</p>
+            <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
             <a href="https://play.unity.com/en/games/90dcf1a8-2604-4ea5-8c4a-9325f72d5cfe/apian-wish-tsa-2024" target="_blank">
                 <img src="images/apian wish.png" alt="Apian Wish" class="project-image">
             </a>
@@ -309,7 +319,8 @@
                 </span>
             </div>
             <hr class="project-divider">
-            <p class="project-description">My first video game design when I first joined TSA (Technological Student Association) beginning in September 2022 to April 2023. I volunteered to be the team lead of 5 members, rapidly learning how to develop and code core game mechanics using C# scripts in Unity Engine.</p>
+            <p class="project-description collapsible-text">My first video game design when I first joined TSA (Technological Student Association) beginning in September 2022 to April 2023. I volunteered to be the team lead of 5 members, rapidly learning how to develop and code core game mechanics using C# scripts in Unity Engine.</p>
+            <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
             <a href="https://play.unity.com/en/games/a3030501-fd63-459c-b98b-b0a985211b4d/treasure-x-truth" target="_blank">
                 <img src="images/treasure.png" alt="Treasure X Truth" class="project-image">
             </a>
@@ -319,17 +330,20 @@
             <div class="project-title-row">
                 <h3 class="project-title">Portfolio Website</h3>
                 <span class="project-icons">
-                    <img src="images/html.png" alt="HTML" class="project-tech-icon">
-                    <img src="images/css.png" alt="CSS" class="project-tech-icon">
+                    <img src="images/HTML.png" alt="HTML" class="project-tech-icon">
+                    <img src="images/CSS.png" alt="CSS" class="project-tech-icon">
                     <img src="images/js.png" alt="JavaScript" class="project-tech-icon">
                 </span>
             </div>
             <hr class="project-divider">
-            <p class="project-description">HTML/CSS/JS with some implementation of Sass. It's what you're looking at right now!</p>
+            <p class="project-description">Built with HTML, CSS, and JavaScript with a retro Windows 95 theme. It's what you're looking at right now!</p>
             <a href="https://github.com/pntran25/helloworld" target="_blank">
                 <img src="images/computer.png" alt="Portfolio Website" class="project-image">
             </a>
             <button onclick="window.open('https://github.com/pntran25/helloworld', '_blank')" class="project-link">GitHub</button>
+        </div>
+        <div class="popup-status-bar">
+            <span class="status-icon"></span> 6 projects &bull; Scroll to explore
         </div>
     </div>
 
@@ -337,15 +351,20 @@
 
     <div id="highlightsPopup" class="popup">
         <div class="popup-header">
-            <h2>Success</h2>
-            <button class="popup-close" onclick="closePopup('highlightsPopup')">×</button>
+            <span class="popup-title">Success</span>
+            <div class="win-buttons">
+                <button class="win-btn win-minimize" onclick="closePopup('highlightsPopup')">_</button>
+                <button class="win-btn win-maximize" onclick="toggleMaximize('highlightsPopup')">□</button>
+                <button class="win-btn win-close" onclick="closePopup('highlightsPopup')">×</button>
+            </div>
         </div>
         <ul class="highlights-list">
             <li class="highlight-item">
                 <h3 class="highlight-title">Technology Student Association 1st Place Winner, 2024</h3>
                 <h3 class="highlight-title">Video Game Design</h3>
                 <hr class="highlight-divider">
-                <p class="highlight-description">From September 2023 to April 2024, as a competitor for TSA (Technological Student Association), I led a team of 5 members as a lead developer and team lead using Unity Engine with C# scripts, naming our project "Apian Wish". We placed 1st, competing aganist 10+ different schools in Video Game Design. This project was a learning curve with trivial debugging and coding 50+ scripts, inspired to improve from my previous video game project, "Treasure X Truth" that placed 2nd in 2023.</p>
+                <p class="highlight-description collapsible-text">From September 2023 to April 2024, as a competitor for TSA (Technological Student Association), I led a team of 5 members as a lead developer and team lead using Unity Engine with C# scripts, naming our project "Apian Wish". We placed 1st, competing aganist 10+ different schools in Video Game Design. This project was a learning curve with trivial debugging and coding 50+ scripts, inspired to improve from my previous video game project, "Treasure X Truth" that placed 2nd in 2023.</p>
+                <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
                 <img src="images/tsa.jpg" alt="TSA" class="highlight-image">
             </li>
             <li class="highlight-item">
@@ -359,47 +378,109 @@
                 </a>
             </li>
         </ul>
+        <div class="popup-status-bar">
+            <span class="status-icon"></span> Achievements unlocked
+        </div>
     </div>
     <!-- Documents Popup -->
     <div id="documentsPopup" class="popup">
         <div class="popup-header">
-            
-            <h2>Papers</h2>
-            <button class="popup-close" onclick="closePopup('documentsPopup')">×</button>
+            <span class="popup-title">Papers</span>
+            <div class="win-buttons">
+                <button class="win-btn win-minimize" onclick="closePopup('documentsPopup')">_</button>
+                <button class="win-btn win-maximize" onclick="toggleMaximize('documentsPopup')">□</button>
+                <button class="win-btn win-close" onclick="closePopup('documentsPopup')">×</button>
+            </div>
         </div>
         <br>
-        <h3 style="text-align: center;">My Resume:</h3>
-        <div style="text-align: center;">
-            <a href="documents/CS Resume.pdf" target="_blank">
-                <img src="images/resumethumbnail.png" alt="Resume" style="width: 70%; display: block; margin: 0 auto; border: 3px solid black; border-radius: 10px;">
+        <h3 class="doc-heading">My Resume:</h3>
+        <div class="doc-center">
+            <a href="documents/CS Resume.pdf" target="_blank" class="resume-preview-link">
+                <object data="documents/CS Resume.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="resume-preview">
+                    <p>PDF preview unavailable.</p>
+                </object>
+                <div class="resume-preview-overlay"></div>
             </a>
             <br>
             <a href="documents/CS Resume.pdf" target="_blank">
                 <button class="project-link">Download</button>
             </a>
         </div>
-        <h3 style="text-align: center;">My References:</h3>
-        <div style="text-align: center;">
+        <h3 class="doc-heading">My References:</h3>
+        <div class="doc-center">
             <h3><u>Dr. Chang Yun</u></h3>
-            <p>Instructional Associate Professor
-            Ph.D., University of Houston</p>
+            <p>Instructional Associate Professor<br>Ph.D., University of Houston</p>
             <a href="documents/changreference.pdf" target="_blank">
-            <img src="images/changreference.png" alt="Chang" style="width: 45%; display: block; margin: 0 auto; border: 3px solid black; border-radius: 8px;">
+                <img src="images/changreference.png" alt="Chang" class="doc-thumbnail doc-ref">
             </a>
+        </div>
+        <div class="popup-status-bar">
+            <span class="status-icon"></span> 2 documents available
+        </div>
+    </div>
+
+    <!-- Experience Popup -->
+    <div id="experiencePopup" class="popup">
+        <div class="popup-header">
+            <span class="popup-title">Experience</span>
+            <div class="win-buttons">
+                <button class="win-btn win-minimize" onclick="closePopup('experiencePopup')">_</button>
+                <button class="win-btn win-maximize" onclick="toggleMaximize('experiencePopup')">□</button>
+                <button class="win-btn win-close" onclick="closePopup('experiencePopup')">×</button>
+            </div>
+        </div>
+        <div class="experience-list">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-role">Software Engineer Intern</h3>
+                    <span class="experience-date">Jan 2026 – Present</span>
+                </div>
+                <p class="experience-company">Energy AI Solutions</p>
+                <hr class="experience-divider">
+                <ul class="experience-desc collapsible-text">
+                    <li>Collaborated with a 5+ member cross-functional team to design and develop an AI-powered coaching application supporting 100+ tech students</li>
+                    <li>Built and integrated full-stack features using React.js, Flask, and MySQL, improving data retrieval efficiency by 30%</li>
+                    <li>Developed backend APIs in Python to support AI-driven recommendations, user profiling, and progress tracking</li>
+                    <li>Deployed and managed application components using Azure cloud services and Blob storage, ensuring 99% uptime</li>
+                    <li>Participated in agile sprint cycles, contributing to code reviews and technical documentation</li>
+                </ul>
+                <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-role">Data Structures Teaching Assistant</h3>
+                    <span class="experience-date">Jan 2026 – Present</span>
+                </div>
+                <p class="experience-company">University of Houston</p>
+                <hr class="experience-divider">
+                <ul class="experience-desc collapsible-text">
+                    <li>Taught students core data structures in C++ — pointers, recursion, STL containers, and Big-O analysis</li>
+                    <li>Reviewed and debugged C++ assignments for correctness and runtime performance</li>
+                    <li>Held office hours and lab sessions to mentor students one-on-one</li>
+                    <li>Contributed to grading rubrics and helped identify common student misconceptions to improve course materials</li>
+                </ul>
+                <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
+            </div>
+        </div>
+        <div class="popup-status-bar">
+            <span class="status-icon"></span> 2 positions &bull; Currently active
         </div>
     </div>
 
     <!-- Contact Popup -->
     <div id="contactPopup" class="popup">
         <div class="popup-header">
-            <h2>Contact</h2>
-            <button class="popup-close" onclick="closePopup('contactPopup')">×</button>
+            <span class="popup-title">Contact</span>
+            <div class="win-buttons">
+                <button class="win-btn win-minimize" onclick="closePopup('contactPopup')">_</button>
+                <button class="win-btn win-maximize" onclick="toggleMaximize('contactPopup')">□</button>
+                <button class="win-btn win-close" onclick="closePopup('contactPopup')">×</button>
+            </div>
         </div>
-        <br>
         <p>Email: phitrann0810@gmail.com</p>
         <p>Outlook: pntran25@cougarnet.uh.edu</p>
         <p>Phone: (713) 452-9278</p>
-        <h3 style="text-align: center;"> Send A Message!</h3>
+        <h3 class="doc-heading">Send A Message!</h3>
         <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
             <input type="hidden" name="access_key" value="65771c5d-fded-4421-bfbe-cfebb5dceaad">
             <label for="name">Name:</label>
@@ -411,6 +492,9 @@
             <br>
             <input type="submit" value="Send">
         </form>
+        <div class="popup-status-bar">
+            <span class="status-icon"></span> Online &bull; Messages welcome
+        </div>
     </div>
 </body>
 </html>

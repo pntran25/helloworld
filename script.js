@@ -23,8 +23,8 @@ function afterbutton() {
 
     setTimeout(function() {
         document.querySelector('.welcome-text').style.display = 'none';
-        document.body.style.transition = "background-color 4s"; // Add transition for background color
-        document.body.style.backgroundColor = "tan";
+        document.body.style.transition = "background-color 4s";
+        document.body.style.backgroundColor = "#d2b48c";
 
         // Show the portfolio content
         document.querySelector('main').style.display = 'block';
@@ -44,6 +44,11 @@ function bringPopupToFront(popup) {
 function showPopup(popupId) {
     const popup = document.getElementById(popupId);
     bringPopupToFront(popup);
+    // Re-trigger animation
+    popup.classList.remove('placed');
+    popup.style.animation = 'none';
+    popup.offsetHeight; // force reflow
+    popup.style.animation = '';
     popup.style.display = 'block';
     // Center the popup, clamp to viewport
     setTimeout(function() {
@@ -56,13 +61,61 @@ function showPopup(popupId) {
         popup.style.top = top + 'px';
         popup.style.left = left + 'px';
         popup.style.transform = 'none';
+        popup.classList.add('placed');
     }, 0);
 }
 
 function closePopup(popupId) {
     const popup = document.getElementById(popupId);
     popup.style.display = 'none';
-    popup.style.zIndex = 10; // reset z-index when closed
+    popup.style.zIndex = 10;
+    // Reset maximize state when closing
+    popup.classList.remove('maximized');
+    popup.removeAttribute('data-prev-style');
+}
+
+function toggleCollapsible(btn) {
+    const textEl = btn.previousElementSibling;
+    if (textEl && textEl.classList.contains('collapsible-text')) {
+        textEl.classList.toggle('expanded');
+        btn.textContent = textEl.classList.contains('expanded') ? '▲ Less' : '▼ Read more';
+    }
+}
+
+function toggleMaximize(popupId) {
+    const popup = document.getElementById(popupId);
+    if (popup.classList.contains('maximized')) {
+        // Restore previous size/position
+        const prev = JSON.parse(popup.getAttribute('data-prev-style'));
+        popup.style.width = prev.width;
+        popup.style.height = prev.height;
+        popup.style.top = prev.top;
+        popup.style.left = prev.left;
+        popup.style.maxWidth = prev.maxWidth;
+        popup.style.maxHeight = prev.maxHeight;
+        popup.style.transform = prev.transform;
+        popup.classList.remove('maximized');
+    } else {
+        // Save current size/position
+        popup.setAttribute('data-prev-style', JSON.stringify({
+            width: popup.style.width,
+            height: popup.style.height,
+            top: popup.style.top,
+            left: popup.style.left,
+            maxWidth: popup.style.maxWidth,
+            maxHeight: popup.style.maxHeight,
+            transform: popup.style.transform
+        }));
+        // Maximize to fill screen (above taskbar)
+        popup.style.top = '0px';
+        popup.style.left = '0px';
+        popup.style.width = '100vw';
+        popup.style.height = 'calc(100vh - 36px)';
+        popup.style.maxWidth = '100vw';
+        popup.style.maxHeight = 'calc(100vh - 36px)';
+        popup.style.transform = 'none';
+        popup.classList.add('maximized');
+    }
 }
 
 function makeDraggable(popupId) {
@@ -205,8 +258,8 @@ function getRandomPosition() {
 
 function playClickSound() {
     var click = new Audio('sound/mouse.mp3');
-    click.play();
     click.volume = 0.1;
+    click.play();
 }
 
 document.addEventListener('click', playClickSound);
@@ -218,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
     makeDraggable('highlightsPopup');
     makeDraggable('documentsPopup');
     makeDraggable('contactPopup');
+    makeDraggable('experiencePopup');
 
     makeResizable('aboutPopup');
     makeResizable('competenciesPopup');
@@ -225,6 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
     makeResizable('highlightsPopup');
     makeResizable('documentsPopup');
     makeResizable('contactPopup');
+    makeResizable('experiencePopup');
 
 
     const chatBubble = document.createElement('div');
@@ -251,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const position = getRandomPosition();
             chatBubble.style.transform = `translate(${position.x}px, ${position.y}px)`;
             chatBubble.style.display = 'flex';
-        }, 350); // shosow after 350ms hold
+        }, 350); // show after 350ms hold
     });
     document.querySelector('.eyes-deco').addEventListener('touchend', function(e) {
         clearTimeout(chatBubbleTimeout);
@@ -265,5 +320,20 @@ document.addEventListener('DOMContentLoaded', function() {
             bringPopupToFront(popup);
         });
     });
+
+    // Win95 taskbar clock
+    function updateClock() {
+        const clock = document.getElementById('taskbarClock');
+        if (clock) {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+            clock.textContent = hours + ':' + minutes + ' ' + ampm;
+        }
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
 });
 
