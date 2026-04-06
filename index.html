@@ -52,6 +52,7 @@
                     <img class="image-phi" src="images/me.jpg" alt="phi">
                     <span class="taskbar-name">Phi Tran</span>
                 </div>
+                <div class="taskbar-tabs" id="taskbarTabs"></div>
                 <div class="taskbar-links">
                     <a href="https://www.linkedin.com/in/pntran25/" target="_blank">
                         <img src="images/linkedin.png" alt="LinkedIn">
@@ -80,7 +81,7 @@
         <div class="popup-header">
             <span class="popup-title">About Me</span>
             <div class="win-buttons">
-                <button class="win-btn win-minimize" onclick="closePopup('aboutPopup')">_</button>
+                <button class="win-btn win-minimize" onclick="minimizePopup('aboutPopup')">_</button>
                 <button class="win-btn win-maximize" onclick="toggleMaximize('aboutPopup')">□</button>
                 <button class="win-btn win-close" onclick="closePopup('aboutPopup')">×</button>
             </div>
@@ -131,7 +132,7 @@
         <div class="popup-header">
             <span class="popup-title">Skills</span>
             <div class="win-buttons">
-                <button class="win-btn win-minimize" onclick="closePopup('competenciesPopup')">_</button>
+                <button class="win-btn win-minimize" onclick="minimizePopup('competenciesPopup')">_</button>
                 <button class="win-btn win-maximize" onclick="toggleMaximize('competenciesPopup')">□</button>
                 <button class="win-btn win-close" onclick="closePopup('competenciesPopup')">×</button>
             </div>
@@ -234,7 +235,7 @@
         <div class="popup-header">
             <span class="popup-title">Projects</span>
             <div class="win-buttons">
-                <button class="win-btn win-minimize" onclick="closePopup('projectsPopup')">_</button>
+                <button class="win-btn win-minimize" onclick="minimizePopup('projectsPopup')">_</button>
                 <button class="win-btn win-maximize" onclick="toggleMaximize('projectsPopup')">□</button>
                 <button class="win-btn win-close" onclick="closePopup('projectsPopup')">×</button>
             </div>
@@ -353,7 +354,7 @@
         <div class="popup-header">
             <span class="popup-title">Success</span>
             <div class="win-buttons">
-                <button class="win-btn win-minimize" onclick="closePopup('highlightsPopup')">_</button>
+                <button class="win-btn win-minimize" onclick="minimizePopup('highlightsPopup')">_</button>
                 <button class="win-btn win-maximize" onclick="toggleMaximize('highlightsPopup')">□</button>
                 <button class="win-btn win-close" onclick="closePopup('highlightsPopup')">×</button>
             </div>
@@ -366,6 +367,14 @@
                 <p class="highlight-description collapsible-text">From September 2023 to April 2024, as a competitor for TSA (Technological Student Association), I led a team of 5 members as a lead developer and team lead using Unity Engine with C# scripts, naming our project "Apian Wish". We placed 1st, competing aganist 10+ different schools in Video Game Design. This project was a learning curve with trivial debugging and coding 50+ scripts, inspired to improve from my previous video game project, "Treasure X Truth" that placed 2nd in 2023.</p>
                 <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
                 <img src="images/tsa.jpg" alt="TSA" class="highlight-image">
+            </li>
+            <li class="highlight-item">
+                <h3 class="highlight-title">Code Coogs — 2nd Place, Best Team Award</h3>
+                <h3 class="highlight-title">Game Development Team Lead</h3>
+                <hr class="highlight-divider">
+                <p class="highlight-description collapsible-text">Pursued a team lead position alongside Jonathan Cummins for a large-scale team project of 12+ members. Collaborated with and tutored team members as we dove into the world of game creation using Unity and C#. Leveraged the engine's capabilities to the fullest, bringing imaginative concepts to life and pushing the boundaries of interactive storytelling. Our team placed 2nd in the awards for best team overall, outpacing my previous designs.</p>
+                <button class="toggle-expand" onclick="toggleCollapsible(this)">▼ Read more</button>
+                <img src="images/team.jpg" alt="Code Coogs Team" class="highlight-image">
             </li>
             <li class="highlight-item">
                 <h3 class="highlight-title">Academic Excellence Scholarship</h3>
@@ -387,7 +396,7 @@
         <div class="popup-header">
             <span class="popup-title">Papers</span>
             <div class="win-buttons">
-                <button class="win-btn win-minimize" onclick="closePopup('documentsPopup')">_</button>
+                <button class="win-btn win-minimize" onclick="minimizePopup('documentsPopup')">_</button>
                 <button class="win-btn win-maximize" onclick="toggleMaximize('documentsPopup')">□</button>
                 <button class="win-btn win-close" onclick="closePopup('documentsPopup')">×</button>
             </div>
@@ -424,7 +433,7 @@
         <div class="popup-header">
             <span class="popup-title">Experience</span>
             <div class="win-buttons">
-                <button class="win-btn win-minimize" onclick="closePopup('experiencePopup')">_</button>
+                <button class="win-btn win-minimize" onclick="minimizePopup('experiencePopup')">_</button>
                 <button class="win-btn win-maximize" onclick="toggleMaximize('experiencePopup')">□</button>
                 <button class="win-btn win-close" onclick="closePopup('experiencePopup')">×</button>
             </div>
@@ -472,7 +481,7 @@
         <div class="popup-header">
             <span class="popup-title">Contact</span>
             <div class="win-buttons">
-                <button class="win-btn win-minimize" onclick="closePopup('contactPopup')">_</button>
+                <button class="win-btn win-minimize" onclick="minimizePopup('contactPopup')">_</button>
                 <button class="win-btn win-maximize" onclick="toggleMaximize('contactPopup')">□</button>
                 <button class="win-btn win-close" onclick="closePopup('contactPopup')">×</button>
             </div>

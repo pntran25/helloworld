@@ -39,10 +39,117 @@ function bringPopupToFront(popup) {
         p.style.zIndex = 10;
     });
     popup.style.zIndex = 1001;
+    // Update taskbar tab active states
+    updateTaskbarActiveTab(popup.id);
+}
+
+// Popup-to-icon mapping for taskbar tabs
+const popupIcons = {
+    aboutPopup: 'images/aboutme.png',
+    competenciesPopup: 'images/competencies.png',
+    experiencePopup: 'images/experience.svg',
+    projectsPopup: 'images/projects.png',
+    highlightsPopup: 'images/highlights.png',
+    documentsPopup: 'images/documents.png',
+    contactPopup: 'images/contactme.png'
+};
+
+function getPopupTitle(popupId) {
+    const popup = document.getElementById(popupId);
+    const titleEl = popup.querySelector('.popup-title');
+    return titleEl ? titleEl.textContent : popupId;
+}
+
+function createTaskbarTab(popupId) {
+    const tabsContainer = document.getElementById('taskbarTabs');
+    // Don't create if already exists
+    if (document.getElementById('tab-' + popupId)) return;
+
+    const tab = document.createElement('button');
+    tab.className = 'taskbar-tab active';
+    tab.id = 'tab-' + popupId;
+    tab.setAttribute('data-popup', popupId);
+
+    const icon = document.createElement('img');
+    icon.className = 'taskbar-tab-icon';
+    icon.src = popupIcons[popupId] || '';
+    icon.alt = '';
+    tab.appendChild(icon);
+
+    const label = document.createElement('span');
+    label.textContent = getPopupTitle(popupId);
+    tab.appendChild(label);
+
+    tab.addEventListener('click', function() {
+        onTaskbarTabClick(popupId);
+    });
+
+    tabsContainer.appendChild(tab);
+}
+
+function removeTaskbarTab(popupId) {
+    const tab = document.getElementById('tab-' + popupId);
+    if (tab) tab.remove();
+}
+
+function updateTaskbarActiveTab(activePopupId) {
+    const tabs = document.querySelectorAll('.taskbar-tab');
+    tabs.forEach(tab => {
+        const pid = tab.getAttribute('data-popup');
+        const popup = document.getElementById(pid);
+        if (pid === activePopupId && popup && popup.style.display !== 'none') {
+            tab.classList.add('active');
+            tab.classList.remove('minimized');
+        } else if (popup && popup.style.display === 'none' && tab.classList.contains('minimized')) {
+            // keep minimized state
+        } else {
+            tab.classList.remove('active');
+            tab.classList.remove('minimized');
+        }
+    });
+}
+
+function onTaskbarTabClick(popupId) {
+    const popup = document.getElementById(popupId);
+    const tab = document.getElementById('tab-' + popupId);
+    if (!popup || !tab) return;
+
+    if (tab.classList.contains('minimized')) {
+        // Restore from minimized
+        popup.classList.remove('placed');
+        popup.style.animation = 'none';
+        popup.offsetHeight;
+        popup.style.animation = '';
+        popup.style.display = 'block';
+        popup.classList.add('placed');
+        bringPopupToFront(popup);
+        tab.classList.remove('minimized');
+        tab.classList.add('active');
+    } else if (popup.style.zIndex === '1001') {
+        // Already the top window — minimize it
+        minimizePopup(popupId);
+    } else {
+        // It's open but not on top — bring to front
+        bringPopupToFront(popup);
+    }
 }
 
 function showPopup(popupId) {
     const popup = document.getElementById(popupId);
+    const tab = document.getElementById('tab-' + popupId);
+
+    // If already open and minimized, restore via tab click
+    if (tab && tab.classList.contains('minimized')) {
+        onTaskbarTabClick(popupId);
+        return;
+    }
+
+    // If already open and visible, just bring to front
+    if (popup.style.display === 'block') {
+        bringPopupToFront(popup);
+        return;
+    }
+
     bringPopupToFront(popup);
     // Re-trigger animation
     popup.classList.remove('placed');
@@ -63,6 +170,9 @@ function showPopup(popupId) {
         popup.style.transform = 'none';
         popup.classList.add('placed');
     }, 0);
+
+    // Create taskbar tab
+    createTaskbarTab(popupId);
 }
 
 function closePopup(popupId) {
@@ -72,6 +182,20 @@ function closePopup(popupId) {
     // Reset maximize state when closing
     popup.classList.remove('maximized');
     popup.removeAttribute('data-prev-style');
+    // Remove taskbar tab
+    removeTaskbarTab(popupId);
+}
+
+function minimizePopup(popupId) {
+    const popup = document.getElementById(popupId);
+    popup.style.display = 'none';
+    popup.style.zIndex = 10;
+    // Keep the tab but mark it minimized
+    const tab = document.getElementById('tab-' + popupId);
+    if (tab) {
+        tab.classList.remove('active');
+        tab.classList.add('minimized');
+    }
 }
 
 function toggleCollapsible(btn) {
