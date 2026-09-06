@@ -1,0 +1,105 @@
+/* ==========================================================================
+   DESKTOP — the icon grid and the mascot behind it. Icons themselves are
+   generated from PORTFOLIO.windows by js/render.js.
+   ========================================================================== */
+
+/* --- Icon grid -----------------------------------------------------------
+   A column-wrapping flex list: icons fill downwards, then start a new
+   column, the way a Win95 desktop does.
+   ------------------------------------------------------------------------ */
+
+.desktop-icons {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 8px;
+    padding: 20px;
+    height: calc(100vh - 80px);
+    position: relative;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 80px;
+    padding: 6px 4px;
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: #000;
+    text-align: center;
+}
+
+.desktop-icon:hover {
+    background: rgba(0, 0, 128, 0.12);
+    border: 1px dotted var(--accent);
+}
+
+.desktop-icon:active {
+    background: rgba(0, 0, 128, 0.25);
+}
+
+.desktop-icon span {
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    word-wrap: break-word;
+    max-width: 72px;
+}
+
+.desktop-icon .image-icons {
+    width: 48px;
+    max-width: 48px;
+    min-width: 48px;
+    height: 48px;
+    display: block;
+    image-rendering: pixelated;
+}
+
+/* --- Mascot --------------------------------------------------------------
+   Centred behind the icons; opens its eyes and speaks on hover.
+   ------------------------------------------------------------------------ */
+
+.eyes-deco {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.eyes-deco img {
+    display: block;
+    width: 25vw;
+    height: auto;
+    opacity: 0.20;
+}
+
+.eyes-deco:hover img {
+    content: url('../images/faceopen.png');
+}
+
+/* --- Speech bubble ------------------------------------------------------- */
+
+.chat-bubble {
+    display: none;
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    padding: 10px 14px;
+    background-color: #ffffcc;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 0 var(--win-border-dark);
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    z-index: 2;
+}
+
+.chat-bubble.is-visible {
+    display: flex;
+}

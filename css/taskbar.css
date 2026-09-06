@@ -1,0 +1,178 @@
+/* ==========================================================================
+   TASKBAR — Start button, open-window tabs, social links, clock.
+
+   The Win95 3D look comes from asymmetric borders: light on the top/left,
+   dark on the bottom/right for a raised button; swap them for a pressed one.
+   ========================================================================== */
+
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: var(--taskbar-height);
+    box-sizing: border-box;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--taskbar-bg);
+    border-top: 2px solid var(--win-border-light);
+    box-shadow: inset 0 1px 0 var(--win-inset-light);
+    font-family: var(--font-ui);
+}
+
+/* --- Start button (name + avatar) ---------------------------------------- */
+
+.taskbar-start {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 26px;
+    box-sizing: border-box;
+    padding: 2px 10px 2px 4px;
+    background: var(--win-button-face);
+    border: 2px solid;
+    border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+    box-shadow: inset 1px 1px 0 var(--win-inset-light);
+    cursor: default;
+}
+
+.taskbar-start:active {
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    box-shadow: inset 1px 1px 0 var(--win-border-darkest);
+}
+
+.taskbar-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.image-phi {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--win-border-dark);
+    object-fit: cover;
+}
+
+/* --- Open-window tabs ---------------------------------------------------- */
+
+.taskbar-tabs {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+    margin: 0 4px;
+    padding: 2px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+
+.taskbar-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.taskbar-tab {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+    min-width: 80px;
+    max-width: 160px;
+    box-sizing: border-box;
+    padding: 0 8px;
+    flex-shrink: 0;
+    background: var(--win-button-face);
+    border: 2px solid;
+    border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+    box-shadow: inset 1px 1px 0 var(--win-inset-light);
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: #000;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+}
+
+/* Focused window — the tab looks pressed in. */
+.taskbar-tab.active {
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    box-shadow: inset 1px 1px 0 var(--win-border-darkest);
+    background: var(--win-border-light);
+    font-weight: bold;
+}
+
+/* Minimized window — raised, but not emphasised. */
+.taskbar-tab.minimized {
+    border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+    box-shadow: inset 1px 1px 0 var(--win-inset-light);
+    background: var(--win-button-face);
+    font-weight: normal;
+}
+
+.taskbar-tab:hover {
+    background: #d4d0c8;
+}
+
+.taskbar-tab-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* --- Social links -------------------------------------------------------- */
+
+.taskbar-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.taskbar-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    border: 1px solid transparent;
+}
+
+.taskbar-links a:hover {
+    border: 1px solid;
+    border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+}
+
+.taskbar-links img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* --- Clock --------------------------------------------------------------- */
+
+.taskbar-clock {
+    min-width: 55px;
+    height: 22px;
+    box-sizing: border-box;
+    padding: 2px 8px;
+    background: var(--win-button-face);
+    border: 2px solid;
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    box-shadow: inset 1px 1px 0 var(--win-border-darkest);
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    line-height: 22px;
+    color: #000;
+    text-align: center;
+}

@@ -1,0 +1,115 @@
+/* ==========================================================================
+   BOOT SCREEN — the clickable computer and the glitchy loading text.
+   ========================================================================== */
+
+/* --- The computer that starts the boot sequence -------------------------- */
+
+.image-button {
+    background: url("../images/computer.png") no-repeat center center;
+    background-size: contain;
+    border: none;
+    width: 250px;
+    height: 200px;
+    transform: translate(0, 250px);
+    display: block;
+    margin: auto auto 600px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Caption text comes from PROFILE.boot.prompt via the --prompt property. */
+.image-button::after {
+    content: var(--prompt, "");
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: var(--font-ui);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.image-button:hover {
+    transform: scale(1.1) translate(0, 225px);
+}
+
+.image-button.is-hidden {
+    display: none;
+}
+
+/* --- Loading / welcome text ---------------------------------------------- */
+
+.boot-text {
+    display: none;
+    transform: translate(0, 300px);
+}
+
+.boot-text.is-visible {
+    display: block;
+}
+
+/* --- Glitch effect -------------------------------------------------------
+   The element holds the real text plus two absolutely-positioned ghost
+   copies (built by renderGlitch() in js/render.js) that are clipped to the
+   top and bottom halves and animated out of sync.
+   ------------------------------------------------------------------------ */
+
+.glitch {
+    background-color: black;
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    color: wheat;
+    position: relative;
+    text-shadow:
+        0.05em 0 0 rgba(255, 0, 0, .75),
+        -0.025em -0.05em 0 rgba(0, 255, 0, .75),
+        0.025em 0.05em rgba(0, 0, 255, .75);
+    animation: glitch 750ms infinite;
+}
+
+.glitch span {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.glitch span:first-child {
+    animation: glitch 650ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-.025em, -.02em);
+    opacity: .8;
+}
+
+.glitch span:last-child {
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+    transform: translate(.02em, .025em);
+    opacity: .8;
+}
+
+@keyframes glitch {
+    0%, 30% {
+        text-shadow:
+            0.05em 0 0 rgba(255, 0, 0, .75),
+            -0.05em -0.025em 0 rgba(0, 255, 0, .75),
+            0.025em 0.05em rgba(0, 0, 255, .75);
+    }
+    31%, 66% {
+        text-shadow:
+            0.025em 0.05em 0 rgba(255, 0, 0, .75),
+            0.025em 0.025em 0 rgba(0, 255, 0, .75),
+            -0.05em -0.05em 0 rgba(0, 0, 255, .75);
+    }
+    67%, 100% {
+        text-shadow:
+            -0.025em 0 0 rgba(255, 0, 0, .75),
+            -0.025em -0.025em 0 rgba(0, 255, 0, .75),
+            -0.025em -0.05em 0 rgba(0, 0, 255, .75);
+    }
+}

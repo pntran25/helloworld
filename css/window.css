@@ -1,0 +1,228 @@
+/* ==========================================================================
+   WINDOW CHROME — the frame every window shares: title bar, control buttons,
+   status bar, resize handle, and the "Read more" toggle.
+
+   Content styling lives in sections.css.
+   ========================================================================== */
+
+/* --- The window itself --------------------------------------------------- */
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    max-width: 85vw;
+    max-height: 75vh;
+    padding: 0 3px 3px;
+    background-color: var(--win-bg);
+    /* Faint CRT scanlines. */
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+    );
+    border: 2px solid;
+    border-color: var(--win-border-light) var(--win-border-darkest) var(--win-border-darkest) var(--win-border-light);
+    box-shadow:
+        inset 1px 1px 0 var(--win-inset-light),
+        inset -1px -1px 0 var(--win-border-dark),
+        2px 2px 8px rgba(0, 0, 0, 0.3);
+    resize: both;
+    overflow: auto;
+    animation: popupOpen 0.3s ease-out forwards;
+}
+
+/* Once js/windows.js has positioned a window it no longer needs the
+   translate(-50%, -50%) centring, so it animates without one. */
+.popup.placed {
+    animation: popupOpenPlaced 0.3s ease-out forwards;
+}
+
+@keyframes popupOpen {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+    60%  { opacity: 1; transform: translate(-50%, -50%) scale(1.02); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes popupOpenPlaced {
+    0%   { opacity: 0; transform: scale(0.4); }
+    60%  { opacity: 1; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Breathing room for the content, but not for the chrome. */
+.popup > *:not(.popup-header):not(.popup-resize-handle) {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* --- Title bar ----------------------------------------------------------- */
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 24px;
+    box-sizing: border-box;
+    padding: 2px 3px 2px 6px;
+    background: var(--win-titlebar);
+    border: none;
+    cursor: move;
+    user-select: none;
+}
+
+.popup-title {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--win-title-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Minimize / maximize / close ----------------------------------------- */
+
+.win-buttons {
+    display: flex;
+    gap: 2px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.win-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 16px;
+    padding: 0;
+    background: var(--win-button-face);
+    border: 2px solid;
+    border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+    box-shadow: inset 1px 1px 0 var(--win-inset-light);
+    font-family: var(--font-ui);
+    font-size: 0.6rem;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    cursor: pointer;
+}
+
+.win-btn:active {
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    box-shadow: inset 1px 1px 0 var(--win-border-darkest);
+}
+
+.win-close:hover {
+    background: var(--accent-hover);
+    color: #fff;
+}
+
+/* --- Resize grip (bottom-right corner) -----------------------------------
+   The grip itself is drawn by the browser (`resize: both` on .popup above);
+   this transparent handle sits over it so makeResizable() in js/windows.js
+   drives the drag and can enforce MIN_WINDOW_SIZE.
+   ------------------------------------------------------------------------ */
+
+.popup-resize-handle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    background: none;
+    cursor: se-resize;
+}
+
+/* --- Status bar ----------------------------------------------------------
+   Text comes from a window's `status` in content.js, or from statusFor()
+   in js/render.js.
+   ------------------------------------------------------------------------ */
+
+.popup-status-bar {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    flex-shrink: 0;
+    margin: 4px;
+    padding: 0 6px;
+    background: var(--win-button-face);
+    border: 2px solid;
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    box-shadow: inset 1px 1px 0 var(--win-border-darkest);
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    color: var(--muted-text);
+}
+
+.popup-status-bar .status-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    background: #00aa00;
+    border-radius: 50%;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+}
+
+/* --- "Read more" ---------------------------------------------------------
+   An element with .collapsible-text is clipped and faded until the button
+   after it adds .expanded (see initWindowManager() in js/windows.js).
+   ------------------------------------------------------------------------ */
+
+.collapsible-text {
+    position: relative;
+    max-height: 3.2em;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+/* Clears the longest section. The transition still reads smoothly because
+   the content stops well short of the cap. */
+.collapsible-text.expanded {
+    max-height: 1200px;
+}
+
+.collapsible-text:not(.expanded)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+    background: linear-gradient(transparent, var(--win-content));
+    pointer-events: none;
+}
+
+.toggle-expand {
+    display: block;
+    margin-top: 2px;
+    padding: 2px 0;
+    background: none;
+    border: none;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.toggle-expand:hover {
+    color: var(--accent-hover);
+}

@@ -1,0 +1,297 @@
+/* ==========================================================================
+   RESPONSIVE — phone-sized screens (≤600px).
+
+   Loaded last so these rules win, and grouped in the same order as the
+   stylesheets they override: desktop → taskbar → window → sections.
+   ========================================================================== */
+
+@media (max-width: 600px) {
+
+    /* --- Desktop --------------------------------------------------------- */
+
+    .desktop-icons {
+        gap: 4px;
+        padding: 10px;
+        height: calc(100vh - 50px);
+    }
+
+    .desktop-icon {
+        width: 64px;
+    }
+
+    .desktop-icon .image-icons {
+        width: 36px;
+        max-width: 36px;
+        min-width: 36px;
+        height: 36px;
+    }
+
+    .desktop-icon span {
+        font-size: 0.6rem;
+    }
+
+    /* --- Taskbar --------------------------------------------------------- */
+
+    .taskbar {
+        height: 30px;
+    }
+
+    .taskbar-start {
+        height: 22px;
+        padding: 2px 6px 2px 2px;
+    }
+
+    .taskbar-name {
+        font-size: 0.65rem;
+    }
+
+    .image-phi {
+        width: 16px;
+        height: 16px;
+    }
+
+    .taskbar-tabs {
+        gap: 1px;
+        margin: 0 2px;
+    }
+
+    .taskbar-tab {
+        height: 20px;
+        min-width: 50px;
+        max-width: 100px;
+        padding: 0 4px;
+        font-size: 0.55rem;
+    }
+
+    .taskbar-tab-icon {
+        width: 12px;
+        height: 12px;
+    }
+
+    .taskbar-clock {
+        min-width: 45px;
+        height: 18px;
+        font-size: 0.6rem;
+        line-height: 18px;
+    }
+
+    /* --- Window chrome --------------------------------------------------- */
+
+    .popup {
+        top: 5vh;
+        left: 2.5vw;
+        transform: none;
+        width: 95vw;
+        max-width: 95vw;
+        max-height: 70vh;
+        font-size: 0.65rem;
+    }
+
+    .popup-header {
+        height: 20px;
+    }
+
+    .popup-title {
+        font-size: 0.7rem;
+    }
+
+    .win-btn {
+        width: 15px;
+        height: 14px;
+        font-size: 0.5rem;
+    }
+
+    /* --- About ----------------------------------------------------------- */
+
+    .about-photo {
+        width: 90%;
+        max-width: 100px;
+    }
+
+    .about-summary {
+        margin: 8px 4px;
+        padding: 6px;
+    }
+
+    .about-education {
+        flex-direction: column;
+        align-items: center;
+        margin: 8px 4px;
+        padding: 8px;
+    }
+
+    .about-uh {
+        width: 25vw;
+        max-width: 100px;
+        margin: 0 0 8px;
+    }
+
+    .about-edu-details {
+        text-align: center;
+    }
+
+    /* Too narrow for label · · · value: stack the rows instead. */
+    .about-facts {
+        margin: 8px 4px;
+        padding: 8px 10px;
+        font-size: 0.7rem;
+    }
+
+    .about-fact {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 5px 0;
+        border-bottom: 1px dotted var(--win-border-dark);
+    }
+
+    .about-fact-leader {
+        display: none;
+    }
+
+    .about-fact dd {
+        text-align: left;
+    }
+
+    .now-playing {
+        margin: 10px 4px;
+        padding: 6px;
+    }
+
+    .np-marquee span {
+        font-size: 0.68rem;
+    }
+
+    .np-eq {
+        height: 28px;
+        gap: 1px;
+    }
+
+    /* --- Skills ---------------------------------------------------------- */
+
+    .skills-section {
+        margin: 6px 4px;
+    }
+
+    .skills-list {
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .skills-list li {
+        font-size: 0.6rem;
+    }
+
+    .skills-icon {
+        width: 28px;
+        height: 28px;
+        margin: 2px;
+    }
+
+    /* --- Experience ------------------------------------------------------ */
+
+    .experience-list {
+        padding-left: 20px;
+    }
+
+    .experience-list::before {
+        left: 14px;
+    }
+
+    .experience-item {
+        margin-left: 14px;
+        padding: 8px 10px;
+    }
+
+    .experience-item::before {
+        left: -23px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .experience-item::after {
+        left: -13px;
+        width: 13px;
+    }
+
+    .experience-role {
+        font-size: 0.75rem;
+    }
+
+    .experience-date {
+        font-size: 0.6rem;
+    }
+
+    .experience-desc {
+        padding-left: 14px;
+        font-size: 0.65rem;
+    }
+
+    /* --- Projects -------------------------------------------------------- */
+
+    .projects-list {
+        margin: 6px 4px;
+        padding: 8px;
+    }
+
+    .project-title {
+        font-size: 0.85rem;
+    }
+
+    .project-description {
+        font-size: 0.7rem;
+    }
+
+    .project-image {
+        width: 95%;
+        max-width: 220px;
+    }
+
+    .project-link {
+        width: 75px;
+        height: 24px;
+        font-size: 0.7rem;
+    }
+
+    /* --- Highlights ------------------------------------------------------ */
+
+    .highlights-list {
+        flex-direction: column;
+        align-items: center;
+        padding: 4px;
+    }
+
+    .highlight-item {
+        width: 95%;
+        max-width: 95vw;
+        padding: 10px;
+        font-size: 0.7rem;
+    }
+
+    .highlight-title {
+        font-size: 0.7rem;
+    }
+
+    .highlight-description {
+        margin: 4px;
+        font-size: 0.65rem;
+    }
+
+    .highlight-image {
+        width: 90%;
+        max-width: 180px;
+    }
+
+    /* --- Contact --------------------------------------------------------- */
+
+    .contact-form input,
+    .contact-form textarea {
+        max-width: 90vw;
+        padding: 4px;
+        font-size: 0.8rem;
+    }
+
+    .contact-form input[type="submit"] {
+        padding: 4px 16px;
+        font-size: 0.8rem;
+    }
+}
