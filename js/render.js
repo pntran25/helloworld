@@ -171,9 +171,10 @@ const LAYOUTS = {
                 <hr class="project-divider">
                 <p class="project-description${project.collapse === false ? '' : ' collapsible-text'}">${esc(project.description)}</p>
                 ${project.collapse === false ? '' : READ_MORE}
-                <a href="${esc(project.href)}" target="_blank" rel="noopener">
-                    <img src="${esc(project.image)}" alt="${esc(project.title)}" class="project-image">
-                </a>
+                ${project.image ? `
+                    <a href="${esc(project.href)}" target="_blank" rel="noopener">
+                        <img src="${esc(project.image)}" alt="${esc(project.title)}" class="project-image">
+                    </a>` : ''}
                 <a href="${esc(project.href)}" target="_blank" rel="noopener">
                     <button class="project-link" type="button">${esc(project.linkLabel || 'Open')}</button>
                 </a>

@@ -279,6 +279,14 @@ const PORTFOLIO = {
                 linkLabel: 'GitHub'
             },
             {
+                title: 'Zootabase — Zoo Management Platform',
+                tech: ['React', 'Node', 'Express.js', 'Azure'],
+                date: 'Feb 2026 – Apr 2026',
+                description: 'Full stack development for a mock zoo that lets visitors and staff handle everything the zoo runs on: browsing exhibits, viewing animal profiles, buying tickets, tracking animal health records, and managing employees. I led a team of 5 to lay out the entire site with a fully functional backend, database, and server in under 3 months. Built with React on the front end and a Node and Express.js API over a SQL database hosted on Azure. The site is no longer live.',
+                href: 'https://github.com/pntran25/zootabase',
+                linkLabel: 'GitHub'
+            },
+            {
                 title: 'Color Detector',
                 tech: ['Python', 'OpenCV', 'Pandas', 'NumPy'],
                 date: 'Apr 2025 – May 2025',
