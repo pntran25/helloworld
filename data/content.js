@@ -193,8 +193,7 @@ const PORTFOLIO = {
             {
                 name: 'Tools & Technologies',
                 items: ['Spring Boot', 'AWS', 'Azure', 'Flask', 'React', 'Node', 'Git',
-                        'Docker', 'Kafka', 'Kubernetes', 'Maven', 'Pandas', 'NumPy',
-                        'REST APIs', 'CI/CD Pipelines', 'Agile/Scrum']
+                        'Docker', 'Kafka', 'Kubernetes', 'Maven', 'Pandas', 'NumPy']
             }
         ]
     },
