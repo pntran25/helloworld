@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPortfolio();
     initWindowManager();
     initTerminal();
+    initLightbox();
     initMascot();
     initClock();
 

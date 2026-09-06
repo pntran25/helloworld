@@ -52,6 +52,49 @@ function techIcon(name) {
    returns the HTML that sits below the title bar.
    ------------------------------------------------------------------------ */
 
+/**
+ * A project's screenshots: the main one, then a strip of any extras. Each is
+ * a button so it is keyboard reachable, and js/lightbox.js opens whichever
+ * one is clicked. Shots share a .project-media wrapper, which is the group
+ * the viewer's arrows step through.
+ */
+function projectMedia(project) {
+    const gallery = project.gallery || [];
+    if (!project.image && !gallery.length) return '';
+
+    const shot = (src, caption, className, extra = '') => `
+        <button class="project-shot ${className}" type="button"
+                data-caption="${esc(caption)}"
+                aria-label="View larger: ${esc(caption)}">
+            <img src="${esc(src)}" alt="${esc(caption)}" loading="lazy">
+            ${extra}
+        </button>`;
+
+    const main = project.image
+        ? shot(project.image, project.title, 'project-shot-main')
+        : '';
+
+    const thumbs = gallery.length ? `
+        <div class="project-thumbs">
+            ${each(gallery, item => shot(
+                item.src,
+                item.caption,
+                'project-shot-thumb',
+                `<span class="project-thumb-caption">${esc(item.caption)}</span>`
+            ))}
+        </div>` : '';
+
+    return `<div class="project-media">${main}${thumbs}</div>`;
+}
+
+/** A project's buttons, accepting either a `links` list or a single `href`. */
+function projectLinks(project) {
+    if (project.links) return project.links;
+    if (!project.href) return [];
+    return [{ href: project.href, label: project.linkLabel || 'Open' }];
+}
+
+
 const LAYOUTS = {
 
     about(w) {
@@ -171,13 +214,13 @@ const LAYOUTS = {
                 <hr class="project-divider">
                 <p class="project-description${project.collapse === false ? '' : ' collapsible-text'}">${esc(project.description)}</p>
                 ${project.collapse === false ? '' : READ_MORE}
-                ${project.image ? `
-                    <a href="${esc(project.href)}" target="_blank" rel="noopener">
-                        <img src="${esc(project.image)}" alt="${esc(project.title)}" class="project-image">
-                    </a>` : ''}
-                <a href="${esc(project.href)}" target="_blank" rel="noopener">
-                    <button class="project-link" type="button">${esc(project.linkLabel || 'Open')}</button>
-                </a>
+                ${projectMedia(project)}
+                <div class="project-links">
+                    ${each(projectLinks(project), link => `
+                        <a href="${esc(link.href)}" target="_blank" rel="noopener">
+                            <button class="project-link" type="button">${esc(link.label)}</button>
+                        </a>`)}
+                </div>
             </div>`);
     },
 

@@ -282,9 +282,26 @@ const PORTFOLIO = {
                 title: 'Zootabase — Zoo Management Platform',
                 tech: ['React', 'Node', 'Express.js', 'Azure'],
                 date: 'Feb 2026 – Apr 2026',
-                description: 'Full stack development for a mock zoo that lets visitors and staff handle everything the zoo runs on: browsing exhibits, viewing animal profiles, buying tickets, tracking animal health records, and managing employees. I led a team of 5 to lay out the entire site with a fully functional backend, database, and server in under 3 months. Built with React on the front end and a Node and Express.js API over a SQL database hosted on Azure. The site is no longer live.',
-                href: 'https://github.com/pntran25/zootabase',
-                linkLabel: 'GitHub'
+                description: 'Full stack development for a mock zoo that lets visitors and staff handle everything the zoo runs on: browsing exhibits, viewing animal profiles, buying tickets, tracking animal health records, managing employees, and pulling reports on the whole operation. I led a team of 5 to lay out the entire site with a fully functional backend, database, and server in under 3 months. Built with React on the front end and a Node and Express.js API over a SQL database hosted on Azure. The frontend is still up, but the servers behind it are switched off, so no live data loads.',
+                image: 'images/zootabase_frontend.jpg',
+                gallery: [
+                    {
+                        src: 'images/zootabase1.png',
+                        caption: 'Admin portal: animal data report'
+                    },
+                    {
+                        src: 'images/zootabase2.png',
+                        caption: 'Admin portal: expanded animal record'
+                    },
+                    {
+                        src: 'images/zootabase_er_tree.png',
+                        caption: 'Entity relationship schema'
+                    }
+                ],
+                links: [
+                    { href: 'https://wildwoods-frontend-ewdsetbrhzf2bwac.eastus2-01.azurewebsites.net', label: 'Live' },
+                    { href: 'https://github.com/pntran25/zootabase', label: 'GitHub' }
+                ]
             },
             {
                 title: 'Color Detector',

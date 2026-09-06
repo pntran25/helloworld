@@ -1,0 +1,237 @@
+/* ==========================================================================
+   IMAGE VIEWER — the full-size view opened by clicking a project screenshot.
+   The frame reuses .popup-header, .popup-title and .win-btn from window.css.
+   ========================================================================== */
+
+.viewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;             /* above the taskbar */
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* The taskbar would otherwise show through the backdrop. */
+body.viewer-open .taskbar {
+    z-index: 1;
+}
+
+.viewer-window {
+    display: flex;
+    flex-direction: column;
+    max-width: 96vw;
+    max-height: 92vh;
+    padding: 0 3px 3px;
+    background-color: var(--win-bg);
+    border: 2px solid;
+    border-color: var(--win-border-light) var(--win-border-darkest) var(--win-border-darkest) var(--win-border-light);
+    box-shadow:
+        inset 1px 1px 0 var(--win-inset-light),
+        inset -1px -1px 0 var(--win-border-dark),
+        3px 3px 12px rgba(0, 0, 0, 0.5);
+    animation: viewerOpen 0.18s ease-out;
+}
+
+@keyframes viewerOpen {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.viewer-window .popup-header {
+    cursor: default;
+}
+
+/* --- The image itself -----------------------------------------------------
+   Fit-to-window by default. `.is-zoomed` drops the size cap so the image
+   renders at its natural pixels and the stage scrolls to pan around it.
+   ------------------------------------------------------------------------ */
+
+.viewer-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    margin: 4px;
+    background: #101010;
+    border: 2px solid;
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+}
+
+.viewer-image {
+    max-width: calc(96vw - 24px);
+    max-height: calc(92vh - 76px);
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+.viewer-stage.is-zoomed {
+    align-items: flex-start;
+    justify-content: flex-start;
+    cursor: grab;
+}
+
+.viewer-stage.is-zoomed:active {
+    cursor: grabbing;
+}
+
+.viewer-stage.is-zoomed .viewer-image {
+    max-width: none;
+    max-height: none;
+    cursor: zoom-out;
+}
+
+/* --- Footer: paging and the zoom hint ------------------------------------ */
+
+.viewer-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 22px;
+    flex-shrink: 0;
+    margin: 0 4px 4px;
+    padding: 0 6px;
+    background: var(--win-button-face);
+    border: 2px solid;
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    box-shadow: inset 1px 1px 0 var(--win-border-darkest);
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    color: var(--muted-text);
+}
+
+.viewer-nav {
+    width: 20px;
+    height: 16px;
+    padding: 0;
+    background: var(--win-button-face);
+    border: 2px solid;
+    border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+    box-shadow: inset 1px 1px 0 var(--win-inset-light);
+    font-size: 0.5rem;
+    line-height: 1;
+    color: #000;
+    cursor: pointer;
+}
+
+.viewer-nav:active {
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    box-shadow: inset 1px 1px 0 var(--win-border-darkest);
+}
+
+.viewer-hint {
+    margin-left: auto;
+}
+
+
+/* ==========================================================================
+   PROJECT SCREENSHOTS — the thumbnails that open the viewer.
+   ========================================================================== */
+
+.project-media {
+    margin: 12px 0 8px;
+}
+
+/* A .project-shot is a button wrapping an image, so it is keyboard
+   reachable; these rules strip the button chrome back off. */
+.project-shot {
+    display: block;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: zoom-in;
+}
+
+.project-shot-main {
+    width: 75%;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.project-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 2px solid;
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-shot:hover img {
+    transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(0, 0, 128, 0.2);
+}
+
+.project-shot:focus-visible img {
+    outline: 2px dotted var(--accent);
+    outline-offset: 2px;
+}
+
+/* --- The strip of smaller shots under the main one ----------------------- */
+
+.project-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.project-thumbs .project-shot {
+    width: 104px;
+}
+
+.project-thumbs .project-shot img {
+    height: 64px;
+    object-fit: cover;
+    object-position: top left;
+}
+
+.project-thumb-caption {
+    display: block;
+    margin-top: 3px;
+    font-family: var(--font-ui);
+    font-size: 0.6rem;
+    line-height: 1.25;
+    color: var(--muted-text);
+    text-align: center;
+}
+
+
+@media (max-width: 600px) {
+
+    .viewer {
+        padding: 8px;
+    }
+
+    .viewer-image {
+        max-width: calc(100vw - 28px);
+        max-height: calc(92vh - 70px);
+    }
+
+    .project-thumbs {
+        gap: 6px;
+    }
+
+    .project-thumbs .project-shot {
+        width: 88px;
+    }
+
+    .project-thumbs .project-shot img {
+        height: 54px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .viewer-window {
+        animation: none;
+    }
+
+    .project-shot:hover img {
+        transform: none;
+    }
+}

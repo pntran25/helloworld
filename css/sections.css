@@ -20,7 +20,6 @@
 .skills-list,
 .experience-item,
 .projects-list,
-.project-image,
 .highlight-item,
 .highlight-image,
 .doc-thumbnail,
@@ -566,20 +565,6 @@
     font-size: 0.8rem;
     line-height: 1.5;
     text-align: left;
-}
-
-.project-image {
-    display: block;
-    width: 75%;
-    max-width: 350px;
-    height: auto;
-    margin: 12px auto;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.project-image:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 12px rgba(0, 0, 128, 0.2);
 }
 
 .project-link {
