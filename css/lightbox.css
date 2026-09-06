@@ -14,6 +14,12 @@
     background: rgba(0, 0, 0, 0.75);
 }
 
+/* An author `display` beats the [hidden] attribute, so restore it here.
+   js/lightbox.js toggles .hidden to open and close the viewer. */
+.viewer[hidden] {
+    display: none;
+}
+
 /* The taskbar would otherwise show through the backdrop. */
 body.viewer-open .taskbar {
     z-index: 1;
