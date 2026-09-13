@@ -270,6 +270,31 @@ const PORTFOLIO = {
 
         projects: [
             {
+                title: 'PacketLens — Packet Capture Analyzer',
+                tech: ['JavaScript', 'Node', 'Web Workers', 'esbuild', 'GitHub Actions'],
+                date: 'Sep 2026',
+                description: "A Wireshark-style packet capture analyzer that runs entirely in the browser. It dissects network traffic, rebuilds conversations, recovers files and exposed credentials, and flags threats, and no data ever leaves the user's machine. Online PCAP analyzers make you upload your capture, which hands internal IPs, hostnames and sometimes plaintext passwords to a third-party server, so I built the whole pipeline from scratch in plain JavaScript with no runtime dependencies: a binary PCAP/PCAPNG parser, a plugin-based dissection engine that goes from Ethernet up to DNS, HTTP, TLS, SSH and SMB, TCP stream reassembly, and a Wireshark-compatible display filter language with its own parser. It carves files sent over HTTP, SMB and email with SHA-256 hashes, recovers credentials from HTTP Basic, FTP, SMTP AUTH and NTLM, detects ARP spoofing, port scans and DNS tunneling, and fingerprints TLS and SSH clients with JA3 and HASSH using hash functions I wrote myself. It all runs in a Web Worker and ships as one self-contained HTML file that also works offline, backed by 92 automated tests and a GitHub Actions pipeline that deploys to GitHub Pages on every push.",
+                image: 'images/packetlens.png',
+                gallery: [
+                    {
+                        src: 'images/packetlens_security.png',
+                        caption: 'Security overview: automated threat findings'
+                    },
+                    {
+                        src: 'images/packetlens_filter.png',
+                        caption: 'Display filter narrowing a capture'
+                    },
+                    {
+                        src: 'images/packetlens_follow.png',
+                        caption: 'Follow stream: reassembled HTTP'
+                    }
+                ],
+                links: [
+                    { href: 'https://pntran25.github.io/packetlens/', label: 'Live' },
+                    { href: 'https://github.com/pntran25/packetlens', label: 'GitHub' }
+                ]
+            },
+            {
                 title: 'Codexa — Coding Platform',
                 tech: ['Java', 'Spring Boot', 'Maven', 'PostgreSQL', 'AWS', 'React'],
                 date: 'May 2025 – Jun 2026',
